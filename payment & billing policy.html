@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment & Billing Policy | Novaplexes</title>
+    <meta name="description" content="Read the Payment and Billing Policy for Novaplexes. Understand our invoicing cycles, accepted payment methods, and milestone structures.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Core Theme (Strict Home Page Colors) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.8; background: var(--bg-white); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.3; }
+        .highlight { color: var(--primary); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; margin: 0; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Policy Page Styling --- */
+        .page-header { padding: 180px 0 80px; background: var(--bg-light); text-align: center; border-bottom: 1px solid var(--border); }
+        .page-header h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        
+        .content-area { padding: 80px 0; max-width: 900px; margin: 0 auto; }
+        .policy-body h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        .policy-body p { margin-bottom: 20px; font-size: 1.1rem; text-align: justify; }
+        .policy-body ul { margin-bottom: 25px; padding-left: 25px; }
+        .policy-body li { margin-bottom: 12px; list-style: square; font-size: 1.05rem; }
+        .update-date { font-weight: bold; color: var(--primary); display: block; margin-bottom: 30px; }
+
+        /* --- MEGA FOOTER (STRICT HOME PAGE STYLE) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; margin-top: 50px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2.3rem; }
+            .footer-grid-mega { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Header Title -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Payment & <span class="highlight">Billing Policy</span></h1>
+            <p>Guidelines for invoicing, accepted payment methods, and account terms.</p>
+        </div>
+    </section>
+
+    <!-- Detailed Content -->
+    <div class="container">
+        <section class="content-area">
+            <div class="policy-body">
+                <span class="update-date">Effective Date: May 01, 2026</span>
+
+                <h2>1. Overview</h2>
+                <p>This Payment & Billing Policy outlines the terms under which Novaplexes ("Company", "we", "us") invoices clients for digital services, including web development, search engine optimization (SEO), digital marketing, AI automation, and consulting. By signing a proposal, executing a contract, or paying an invoice, you ("Client", "you") agree to the billing terms detailed below.</p>
+
+                <h2>2. Accepted Payment Methods</h2>
+                <p>We strive to make the payment process as seamless as possible for our domestic and international clients. Novaplexes accepts the following methods of payment:</p>
+                <ul>
+                    <li><strong>Credit & Debit Cards:</strong> Visa, MasterCard, American Express, and Discover (processed securely via Stripe or Razorpay).</li>
+                    <li><strong>Bank Transfers:</strong> Direct NEFT/RTGS/IMPS (for Indian clients) and International Wire Transfers/SWIFT (for global clients).</li>
+                    <li><strong>Digital Wallets & UPI:</strong> Accepted primarily for domestic clients within India.</li>
+                    <li><strong>PayPal:</strong> Accepted for international clients upon request (processing fees may apply).</li>
+                </ul>
+
+                <h2>3. Project-Based Billing (Milestones)</h2>
+                <p>For finite projects such as Custom Website Design, E-Commerce Development, or specific AI Integrations, billing is structured around milestones to ensure mutual protection and steady progress:</p>
+                <ul>
+                    <li><strong>Initial Deposit:</strong> A standard 50% non-refundable deposit is required to commence any project, secure resources, and begin the discovery/wireframing phase.</li>
+                    <li><strong>Mid-Point Milestone:</strong> Depending on the size of the project, an intermediate payment (e.g., 25%) may be required upon approval of design mockups or completion of core development.</li>
+                    <li><strong>Final Delivery:</strong> The remaining balance (e.g., 25%) is strictly due prior to the final handover of source code, deployment to the live server, or domain transfer. No project will be pushed live with an outstanding balance.</li>
+                </ul>
+
+                <h2>4. Monthly Retainers (Ongoing Services)</h2>
+                <p>Services such as SEO, Pay-Per-Click (PPC) Management, Social Media Management, and Dedicated Developer Augmentation are billed on a recurring monthly retainer basis.</p>
+                <ul>
+                    <li><strong>Invoicing Cycle:</strong> Retainer invoices are generated and sent on the 1st of every month for the upcoming month of service (billing in advance).</li>
+                    <li><strong>Due Date:</strong> All retainer invoices are net-7 (due within 7 days of the invoice date).</li>
+                    <li><strong>Auto-Pay:</strong> For your convenience, clients can opt-in to auto-billing via credit card, where the monthly retainer is automatically deducted on the invoice date.</li>
+                </ul>
+
+                <h2>5. Late Payments & Account Suspension</h2>
+                <p>Timely payments allow us to dedicate the necessary resources and uninterrupted focus to your campaigns. In the event of late payments, the following policies apply:</p>
+                <ul>
+                    <li><strong>Grace Period:</strong> We offer a 3-day grace period past the invoice due date before any action is taken.</li>
+                    <li><strong>Late Fees:</strong> Invoices unpaid after 10 days from the due date will incur a late fee of 1.5% per month (or the maximum allowed by law) on the outstanding balance.</li>
+                    <li><strong>Service Suspension:</strong> If an invoice remains unpaid 15 days past the due date, Novaplexes reserves the right to pause all active work, pause ad campaigns, and suspend hosting/maintenance services until the account is brought current.</li>
+                </ul>
+
+                <h2>6. Third-Party Costs & Ad Spends</h2>
+                <p>Unless explicitly stated in your contract, Novaplexes' service fees do not include third-party expenses. Clients are directly responsible for funding their own advertising accounts (Google Ads, Meta Ads, etc.). If Novaplexes agrees to pay a third-party vendor on your behalf (e.g., premium plugins, stock images, domain renewals), these expenses will be itemized on your invoice and must be reimbursed immediately. Novaplexes is not liable for ad account suspensions due to the client's failure to fund the platform.</p>
+
+                <h2>7. Taxes</h2>
+                <p>All prices quoted in proposals, contracts, or on our website are exclusive of applicable taxes unless stated otherwise. For clients based in India, Goods and Services Tax (GST) at the prevailing rate (currently 18%) will be added to the final invoice. International clients may be subject to their local tax regulations; however, Indian GST will not be levied on export of services (subject to compliance with LUT guidelines).</p>
+
+                <h2>8. Disputed Charges & Chargebacks</h2>
+                <p>If you believe there is an error on your invoice, you must notify our billing department in writing within 7 days of the invoice date. Raising a fraudulent credit card chargeback without attempting to resolve the issue with our billing team first constitutes a breach of contract and may result in immediate termination of services and legal action to recover the funds.</p>
+
+                <h2>9. Contact for Billing Support</h2>
+                <p>For any questions regarding your invoices, to update your payment methods, or to discuss payment plans, please reach out to our finance team:</p>
+                <p><strong>Email:</strong> legal@novaplexes.com<br>
+                <strong>Office:</strong> Ghatampur, Kanpur Nagar, Uttar Pradesh, India - 209206</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mega Footer (HOME PAGE STYLE) -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

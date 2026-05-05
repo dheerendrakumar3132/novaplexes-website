@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Advertising Services | Novaplexes</title>
+    <meta name="description" content="Maximize your ROI with Novaplexes' advanced Advertising services. Expert Google Ads, Meta Ads, Programmatic, and B2B LinkedIn campaigns.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Page Header (Inner Hero) --- */
+        .page-header { padding: 180px 0 100px; background: linear-gradient(135deg, #1e293b 0%, #020617 100%); color: var(--bg-white); text-align: center; position: relative; overflow: hidden; }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #cbd5e1; max-width: 800px; margin: 0 auto; }
+        
+        /* --- Advertising Services Grid --- */
+        .ad-services { background: var(--bg-white); }
+        .ad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .ad-card { background: var(--bg-light); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); position: relative; z-index: 1; }
+        .ad-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); background: var(--bg-white); border-color: var(--primary); }
+        .ad-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; display: inline-block; background: #e0e7ff; padding: 15px; border-radius: 12px; }
+        .ad-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--dark); }
+        .ad-card p { margin-bottom: 20px; color: var(--text); font-size: 1.05rem; }
+        .ad-card ul { list-style: none; margin-top: 15px; }
+        .ad-card ul li { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
+        .ad-card ul li i { font-size: 1rem; color: #10b981; background: transparent; padding: 0; margin: 0; }
+
+        /* --- Stats / ROAS Section --- */
+        .roas-stats { background: var(--primary); color: var(--bg-white); padding: 80px 0; text-align: center; }
+        .roas-stats h2 { color: var(--bg-white); margin-bottom: 50px; font-size: 2.5rem; }
+        .stats-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; }
+        .stat-box { width: 220px; }
+        .stat-box h4 { font-size: 4rem; color: var(--bg-white); margin-bottom: 5px; font-weight: 800; line-height: 1; }
+        .stat-box p { font-size: 1.2rem; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
+
+        /* --- Ad Platforms Stack --- */
+        .platforms { padding: 100px 0; background: var(--bg-light); text-align: center; }
+        .platforms-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px; }
+        .platform-card { background: var(--bg-white); border: 1px solid var(--border); width: 180px; padding: 30px 20px; border-radius: 12px; transition: var(--transition); }
+        .platform-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--dark-light); }
+        .platform-card i { font-size: 3.5rem; color: var(--dark); margin-bottom: 15px; }
+        .platform-card h4 { font-size: 1.1rem; color: var(--dark); font-weight: 600; }
+
+        /* --- Pricing/Packages (Ad Spend Based) --- */
+        .pricing { background: var(--bg-white); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-light); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); background: var(--bg-white); }
+        .pricing-card.popular { border-color: var(--primary); border-width: 2px; background: var(--bg-white); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .ad-spend { font-size: 1rem; color: var(--primary); font-weight: 600; margin-bottom: 20px; display: block; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 30px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 15px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: #10b981; margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--dark); color: var(--bg-white); text-align: center; padding: 90px 0; }
+        .cta h2 { color: var(--bg-white); font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Turn Clicks Into <br><span class="highlight">High-Value Clients</span></h1>
+            <p>Stop burning money on bad traffic. We design hyper-targeted, data-driven advertising campaigns that scale your ROAS (Return on Ad Spend) and dominate your market.</p>
+        </div>
+    </section>
+
+    <section id="campaigns" class="section-padding ad-services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Media Buying & Campaign Mastery</h2>
+                <p>We manage millions in ad spend across global platforms, delivering predictable revenue growth through precision targeting and creative testing.</p>
+            </div>
+            
+            <div class="ad-grid">
+                <div class="ad-card reveal">
+                    <i class="fab fa-google"></i>
+                    <h3>Google Search & Shopping</h3>
+                    <p>Capture high-intent buyers exactly when they are searching for your product or service. We bid smarter, not harder.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Advanced Keyword Bidding</li>
+                        <li><i class="fas fa-check"></i> E-commerce Shopping Feeds</li>
+                        <li><i class="fas fa-check"></i> Negative Keyword Management</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card reveal">
+                    <i class="fab fa-meta"></i>
+                    <h3>Meta (Facebook/IG) Ads</h3>
+                    <p>Unlock exponential growth with visually stunning creatives and machine-learning driven audience targeting.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Lookalike & Custom Audiences</li>
+                        <li><i class="fas fa-check"></i> Dynamic Product Ads (DPA)</li>
+                        <li><i class="fas fa-check"></i> Conversion API Integration</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card reveal">
+                    <i class="fab fa-linkedin-in"></i>
+                    <h3>B2B LinkedIn Advertising</h3>
+                    <p>Generate high-ticket leads by targeting decision-makers based on job title, company size, and industry.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Lead Generation Forms</li>
+                        <li><i class="fas fa-check"></i> Account-Based Marketing (ABM)</li>
+                        <li><i class="fas fa-check"></i> Sponsored InMail Campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card reveal">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube & Video Ads</h3>
+                    <p>Build massive brand awareness and drive conversions with skippable in-stream ads and Shorts campaigns.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> TrueView for Action</li>
+                        <li><i class="fas fa-check"></i> Video Remarketing Sequences</li>
+                        <li><i class="fas fa-check"></i> CTV (Connected TV) Ads</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card reveal">
+                    <i class="fab fa-tiktok"></i>
+                    <h3>TikTok & Viral Ads</h3>
+                    <p>Tap into Gen-Z and Millennial purchasing power with authentic UGC (User Generated Content) style video ads.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Spark Ads & In-Feed Videos</li>
+                        <li><i class="fas fa-check"></i> UGC Creator Sourcing</li>
+                        <li><i class="fas fa-check"></i> Trend-Based Ad Copy</li>
+                    </ul>
+                </div>
+
+                <div class="ad-card reveal">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Programmatic & Retargeting</h3>
+                    <p>Follow your website visitors across the internet. We buy premium ad space in real-time to bring bounced traffic back.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Cross-Device Retargeting</li>
+                        <li><i class="fas fa-check"></i> Real-Time Bidding (RTB)</li>
+                        <li><i class="fas fa-check"></i> Premium Display Networks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roas-stats">
+        <div class="container reveal">
+            <h2>The Novaplexes Impact</h2>
+            <div class="stats-wrapper">
+                <div class="stat-box">
+                    <h4>$50M+</h4>
+                    <p>Ad Spend Managed</p>
+                </div>
+                <div class="stat-box">
+                    <h4>4.8x</h4>
+                    <p>Average ROAS</p>
+                </div>
+                <div class="stat-box">
+                    <h4>-40%</h4>
+                    <p>Drop in CPA</p>
+                </div>
+                <div class="stat-box">
+                    <h4>24/7</h4>
+                    <p>Campaign Optimization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms" class="platforms section-padding">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Certified Platform Experts</h2>
+                <p>We leverage native tools, third-party trackers, and AI algorithms across all major advertising networks.</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card"><i class="fab fa-google"></i><h4>Google Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-facebook"></i><h4>Meta Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-linkedin"></i><h4>LinkedIn Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-tiktok"></i><h4>TikTok Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-amazon"></i><h4>Amazon Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-pinterest"></i><h4>Pinterest Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-snapchat"></i><h4>Snapchat Ads</h4></div>
+                <div class="platform-card"><i class="fab fa-twitter"></i><h4>X (Twitter) Ads</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing section-padding">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Advertising Management Plans</h2>
+                <p>Transparent fee structures based on your monthly ad spend and complexity.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Growth Tier</h3>
+                    <span class="ad-spend">Up to $10,000 Ad Spend /mo</span>
+                    <div class="price">15% <span>of Spend</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Google OR Meta Ads Management</li>
+                        <li><i class="fas fa-check"></i> Custom Audience Creation</li>
+                        <li><i class="fas fa-check"></i> Basic Retargeting Setup</li>
+                        <li><i class="fas fa-check"></i> Bi-weekly Performance Report</li>
+                        <li><i class="fas fa-check"></i> Conversion Tracking Setup</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Enquire Now</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">AGENCY RECOMMENDED</div>
+                    <h3>Scale Tier</h3>
+                    <span class="ad-spend">$10,000 - $50,000 Ad Spend /mo</span>
+                    <div class="price">12% <span>of Spend</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Omnichannel (Google + Meta + TikTok)</li>
+                        <li><i class="fas fa-check"></i> Advanced A/B Creative Testing</li>
+                        <li><i class="fas fa-check"></i> Dynamic Product Ads (E-commerce)</li>
+                        <li><i class="fas fa-check"></i> Weekly Strategy Calls</li>
+                        <li><i class="fas fa-check"></i> Landing Page Optimization Advice</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Scale My Ad Spend</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise / Volume</h3>
+                    <span class="ad-spend">$50,000+ Ad Spend /mo</span>
+                    <div class="price">Custom <span>Flat Fee</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Full Funnel Ad Domination</li>
+                        <li><i class="fas fa-check"></i> Custom Data Studio Dashboards</li>
+                        <li><i class="fas fa-check"></i> B2B LinkedIn & Programmatic Buying</li>
+                        <li><i class="fas fa-check"></i> In-house Creative Design Support</li>
+                        <li><i class="fas fa-check"></i> Dedicated Media Buying Team</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Sales</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container reveal">
+            <h2>Stop Guessing. Start Scaling.</h2>
+            <p>Let our senior media buyers audit your current ad accounts for free. We will show you exactly where you are losing money and how to fix it.</p>
+            <a href="#contact" class="btn btn-primary" style="background:#2563eb; color:#fff; padding:15px 40px; border:2px solid #2563eb; font-size:1.1rem;">Request Free Account Audit</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20want%20to%20improve%20my%20Ad%20ROAS!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

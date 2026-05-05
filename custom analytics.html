@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Analytics & BI Solutions | Novaplexes</title>
+    <meta name="description" content="Unlock the power of your data with Novaplexes. Custom dashboards, predictive analytics, data warehousing, and Business Intelligence solutions.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --data-accent: #f97316; /* Cyan accent for Data/Analytics vibes */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+        .highlight-data { color: var(--data-accent); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+        .btn-data { background: var(--data-accent); color: white; border: none; }
+        .btn-data:hover { background: #0891b2; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section with Analytics Background Image --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #e2e8f0; max-width: 850px; margin: 0 auto 30px; font-weight: 300; }
+
+        /* --- Analytics Services Grid --- */
+        .analytics-services { background: var(--bg-light); }
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .analytics-card { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+        .analytics-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--data-accent); }
+        .analytics-card i { font-size: 2.8rem; color: var(--data-accent); margin-bottom: 25px; display: inline-block; background: #ecfeff; padding: 18px; border-radius: 12px; transition: var(--transition); }
+        .analytics-card:hover i { background: var(--data-accent); color: white; }
+        .analytics-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .analytics-card p { margin-bottom: 20px; color: var(--text); font-size: 1.05rem; }
+
+        /* --- Visual Gallery / Dashboards (Images) --- */
+        .visual-gallery { padding: 100px 0; background: var(--bg-white); }
+        .visual-gallery .section-title h2 { color: var(--dark); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .gallery-img-card { border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 400px; cursor: pointer; }
+        .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-img-card:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; opacity: 0; transition: var(--transition); }
+        .gallery-img-card:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 5px; }
+        .gallery-overlay p { margin: 0; font-size: 0.95rem; color: var(--data-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Tech Stack & Partners --- */
+        .tech-stack { padding: 80px 0; background: var(--dark); text-align: center; color: white; }
+        .tech-stack .section-title h2 { color: white; }
+        .tech-stack .section-title p { color: var(--text-light); }
+        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+        .tech-item { width: 140px; }
+        .tech-item i { font-size: 3.5rem; color: var(--text-light); margin-bottom: 15px; transition: var(--transition); }
+        .tech-item:hover i { color: var(--data-accent); transform: translateY(-5px); }
+        .tech-item h4 { font-size: 1.1rem; color: white; font-weight: 600; }
+
+        /* --- Methodology / Data Pipeline --- */
+        .process-section { padding: 100px 0; background: var(--bg-light); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px; position: relative; }
+        .process-step { text-align: center; padding: 30px 20px; background: var(--bg-white); border-radius: 12px; border: 1px solid var(--border); position: relative; z-index: 1; transition: var(--transition); }
+        .process-step:hover { border-color: var(--data-accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1); }
+        .process-step .step-num { width: 50px; height: 50px; background: var(--data-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 20px; font-size: 1.3rem; box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4); }
+        .process-step h3 { color: var(--dark); font-size: 1.2rem; margin-bottom: 10px; }
+        .process-step p { color: var(--text); font-size: 0.95rem; }
+
+        /* --- Pricing/Packages --- */
+        .pricing { padding: 100px 0; background: var(--bg-white); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-light); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--data-accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); background: var(--bg-white); }
+        .pricing-card.popular { border-color: var(--data-accent); border-width: 2px; background: var(--bg-white); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--data-accent); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 30px; margin-top: 15px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 15px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: #10b981; margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--data-accent); color: white; text-align: center; padding: 90px 0; }
+        .cta h2 { color: white; font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Stop Guessing. <br><span class="highlight-data">Start Measuring.</span></h1>
+            <p>Transform raw, scattered data into actionable boardroom strategies. Novaplexes engineers custom analytics pipelines, predictive models, and intuitive BI dashboards for data-driven companies.</p>
+            <a href="#expertise" class="btn btn-data" style="margin-top: 15px; padding: 15px 35px; font-size: 1.1rem; border-radius: 8px;">Explore Analytics Solutions</a>
+        </div>
+    </section>
+
+    <section id="expertise" class="section-padding analytics-services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Custom Business Intelligence Solutions</h2>
+                <p>We break down data silos, centralize your metrics, and build systems that give you a 360-degree view of your business.</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card reveal">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Custom BI Dashboards</h3>
+                    <p>We build interactive, real-time dashboards using Power BI, Tableau, and Looker so your executive team can monitor KPIs at a glance without relying on spreadsheets.</p>
+                </div>
+
+                <div class="analytics-card reveal">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Warehousing & ETL</h3>
+                    <p>Scattered data is useless data. We design secure data architectures (AWS, Snowflake, BigQuery) and build ETL pipelines to centralize information from all your SaaS tools.</p>
+                </div>
+
+                <div class="analytics-card reveal">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Marketing Attribution Models</h3>
+                    <p>Know exactly which ads are driving revenue. We implement multi-touch attribution models to track the complex customer journey from first click to final purchase.</p>
+                </div>
+
+                <div class="analytics-card reveal">
+                    <i class="fas fa-brain"></i>
+                    <h3>Predictive Analytics & ML</h3>
+                    <p>Move from "what happened?" to "what will happen?". We deploy machine learning models to forecast sales, predict customer churn, and optimize dynamic pricing.</p>
+                </div>
+
+                <div class="analytics-card reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web & Product Analytics</h3>
+                    <p>Deep dive into user behavior. We implement advanced Google Analytics 4 (GA4), Mixpanel, and server-side tracking to analyze how users interact with your digital products.</p>
+                </div>
+
+                <div class="analytics-card reveal">
+                    <i class="fas fa-broom"></i>
+                    <h3>Data Auditing & Cleansing</h3>
+                    <p>Bad data leads to bad decisions. We audit your existing tracking setups, identify discrepancies, remove duplicates, and ensure 100% data integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="visual-gallery">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Visualizing the Complex</h2>
+                <p>We turn millions of rows of data into beautiful, intuitive, and highly interactive visual reports.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="Financial Analytics Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Executive Dashboards</h3>
+                        <p>Real-Time Financial & KPI Tracking</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="Data Science Team Analyzing Charts">
+                    <div class="gallery-overlay">
+                        <h3>Predictive Modeling</h3>
+                        <p>Forecasting Trends & Customer Churn</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1000&auto=format&fit=crop" alt="Marketing Attribution Graphs">
+                    <div class="gallery-overlay">
+                        <h3>Marketing Attribution</h3>
+                        <p>Cross-Channel ROAS Visualization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Our Data Engineering Pipeline</h2>
+                <p>A rigorous, scalable framework to convert your fragmented data into a competitive advantage.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-num">1</div>
+                    <h3>Discovery & Audit</h3>
+                    <p>We analyze your current tech stack, identify data silos, and define the critical business questions your data needs to answer.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">2</div>
+                    <h3>Architecture & ETL</h3>
+                    <p>Our engineers build secure pipelines to Extract, Transform, and Load (ETL) your data from various sources into a centralized, clean data warehouse.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">3</div>
+                    <h3>Modeling & Logic</h3>
+                    <p>We apply business logic, structure the datasets, and develop SQL or Python-based models to calculate your specific KPIs accurately.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">4</div>
+                    <h3>Visualization</h3>
+                    <p>Finally, we connect the models to BI tools like Power BI or Tableau, creating automated, interactive dashboards for your team to use daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech-stack" class="tech-stack">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Enterprise-Grade Technology</h2>
+                <p>We build our analytics solutions on the world's most secure and powerful data infrastructure.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item"><i class="fas fa-chart-bar"></i><h4>Power BI</h4></div>
+                <div class="tech-item"><i class="fas fa-chart-area"></i><h4>Tableau</h4></div>
+                <div class="tech-item"><i class="fab fa-aws"></i><h4>AWS Redshift</h4></div>
+                <div class="tech-item"><i class="fab fa-google"></i><h4>Google BigQuery</h4></div>
+                <div class="tech-item"><i class="fas fa-snowflake"></i><h4>Snowflake</h4></div>
+                <div class="tech-item"><i class="fab fa-python"></i><h4>Python / Pandas</h4></div>
+                <div class="tech-item"><i class="fas fa-database"></i><h4>PostgreSQL</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Analytics & BI Plans</h2>
+                <p>Scalable data solutions, whether you need a single dashboard or a complete enterprise data warehouse.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Reporting Starter</h3>
+                    <div class="price">Custom <span>/setup</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> GA4 & Tag Manager Setup</li>
+                        <li><i class="fas fa-check"></i> 1 Looker Studio Dashboard</li>
+                        <li><i class="fas fa-check"></i> Connect up to 3 Data Sources</li>
+                        <li><i class="fas fa-check"></i> Basic KPI Tracking</li>
+                        <li><i class="fas fa-check"></i> Monthly Automated Reports</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Start Tracking</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">AGENCY RECOMMENDED</div>
+                    <h3>Advanced BI Dashboard</h3>
+                    <div class="price">Custom <span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Power BI or Tableau Development</li>
+                        <li><i class="fas fa-check"></i> Connect up to 10 SaaS Sources via APIs</li>
+                        <li><i class="fas fa-check"></i> Automated Data Refreshing</li>
+                        <li><i class="fas fa-check"></i> Cross-Channel Marketing Attribution</li>
+                        <li><i class="fas fa-check"></i> Interactive Filtering & Drill-downs</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-data">Build My Dashboard</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise Data Warehouse</h3>
+                    <div class="price">Let's Talk</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Full Cloud Data Architecture (AWS/GCP)</li>
+                        <li><i class="fas fa-check"></i> Complex ETL Pipeline Engineering</li>
+                        <li><i class="fas fa-check"></i> Custom Predictive ML Models</li>
+                        <li><i class="fas fa-check"></i> Real-time Streaming Analytics</li>
+                        <li><i class="fas fa-check"></i> Dedicated Data Science Team</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Engineering</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container reveal">
+            <h2>Your Data is Your Most Valuable Asset.</h2>
+            <p>Stop leaving money on the table due to blind spots in your business. Let Novaplexes turn your raw data into your greatest competitive advantage.</p>
+            <a href="#contact" class="btn btn-dark" style="background:#0f172a; color:#fff; padding:15px 40px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1rem; border: 2px solid white;">Request a Free Data Audit</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20want%20to%20build%20a%20custom%20analytics%20dashboard!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                   <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Novaplexes</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="my-logo.jpeg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- International Telephone Input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    
+    <style>
+        /* --- Root Variables --- */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .highlight { color: var(--primary); }
+
+        /* --- Fixed Header --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 20px 0; transition: var(--transition); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; color: var(--dark); cursor: pointer; margin: 0; }
+        .back-home { text-decoration: none; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .back-home:hover { color: var(--primary); }
+
+        /* --- Login Form Section --- */
+        .auth-wrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 140px 0 60px; }
+        .auth-card { background: var(--bg-white); width: 100%; max-width: 450px; padding: 50px 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+        .auth-header { text-align: center; margin-bottom: 40px; }
+        .auth-header h2 { font-size: 2rem; color: var(--dark); font-weight: 800; margin-bottom: 10px; }
+
+        .form-group { margin-bottom: 20px; position: relative; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark); font-size: 0.9rem; }
+        .form-group i.icon-left { position: absolute; left: 15px; top: 40px; color: var(--text-light); z-index: 2; }
+        
+        .form-control { width: 100%; padding: 14px 15px 14px 45px; border: 1px solid var(--border); border-radius: 8px; outline: none; font-size: 1rem; font-family: 'Inter', sans-serif; transition: var(--transition); background: var(--bg-light); }
+        .form-control:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        input[type="date"].form-control { padding-left: 45px; cursor: pointer; }
+
+        /* Country Code Plugin Styling Fixes */
+        .iti { width: 100%; }
+        .iti__flag-container { z-index: 5; }
+        #regMobile { padding-left: 90px; } /* Flag ke liye space */
+
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
+        .form-options a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
+        
+        .btn-auth { width: 100%; padding: 15px; border: none; border-radius: 8px; background: var(--primary); color: white; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: var(--transition); }
+        .btn-auth:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+
+        .auth-footer { text-align: center; margin-top: 30px; font-size: 0.95rem; }
+        .auth-footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
+
+        /* --- MODAL (POPUP) GENERAL CSS --- */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); padding: 20px; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; transform: scale(0.8); transition: var(--transition); max-height: 90vh; overflow-y: auto; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: var(--transition); z-index: 10; background: var(--bg-white); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .close-modal:hover { color: var(--dark); background: var(--bg-light); }
+
+        .signup-width { max-width: 550px; }
+        .forgot-width { max-width: 420px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* --- Mega Footer --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; margin-top: 50px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; font-size: 2rem; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .footer-grid-mega { grid-template-columns: 1fr 1fr; }
+            .auth-card { padding: 40px 25px; }
+            .form-grid { grid-template-columns: 1fr; gap: 0; }
+            .modal-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Login Section -->
+    <section class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Welcome <span class="highlight">Back</span></h2>
+                <p>Enter your credentials to access your dashboard.</p>
+            </div>
+
+            <form action="#">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <i class="fas fa-envelope icon-left"></i>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="name@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <i class="fas fa-lock icon-left"></i>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-options">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a id="openForgot">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-auth">Sign In</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>New to Novaplexes? <a id="openSignup">Create an Account</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNUP MODAL -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-content signup-width">
+            <span class="close-modal" id="closeSignup"><i class="fas fa-times"></i></span>
+            <div class="auth-header" style="margin-bottom: 25px;">
+                <h2>Join <span class="highlight">Novaplexes</span></h2>
+                <p>Create your free account today.</p>
+            </div>
+            <form action="#">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="regName">Full Name</label>
+                        <i class="fas fa-user icon-left"></i>
+                        <input type="text" id="regName" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email Address</label>
+                        <i class="fas fa-envelope icon-left"></i>
+                        <input type="email" id="regEmail" class="form-control" placeholder="name@company.com" required>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <!-- Updated Mobile Field with Country Code -->
+                    <div class="form-group">
+                        <label for="regMobile">Mobile Number</label>
+                        <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regDob">Date of Birth</label>
+                        <i class="fas fa-calendar-alt icon-left"></i>
+                        <input type="date" id="regDob" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="regPass">Create Password</label>
+                        <i class="fas fa-lock icon-left"></i>
+                        <input type="password" id="regPass" class="form-control" placeholder="Min 8 chars" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPass">Confirm Password</label>
+                        <i class="fas fa-shield-alt icon-left"></i>
+                        <input type="password" id="regConfirmPass" class="form-control" placeholder="Re-type password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-auth" style="margin-top: 10px;">Register Now</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-light);">
+                By clicking "Register Now", you agree to our <a href="terms of use.html" style="color:var(--primary); text-decoration:none;">Terms</a> & <a href="privacy policy.html" style="color:var(--primary); text-decoration:none;">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- FORGOT PASSWORD MODAL -->
+    <div class="modal-overlay" id="forgotModal">
+        <div class="modal-content forgot-width">
+            <span class="close-modal" id="closeForgot"><i class="fas fa-times"></i></span>
+            <div class="auth-header" style="margin-bottom: 25px;">
+                <h2>Reset <span class="highlight">Password</span></h2>
+                <p>Enter your email to receive a secure reset link.</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Reset link has been sent to your email!');">
+                <div class="form-group">
+                    <label for="resetEmail">Email Address</label>
+                    <i class="fas fa-envelope icon-left"></i>
+                    <input type="email" id="resetEmail" class="form-control" placeholder="name@company.com" required>
+                </div>
+                <button type="submit" class="btn-auth" style="margin-top: 10px;">Send Reset Link</button>
+                <div class="auth-footer" style="margin-top: 20px;">
+                    <p><a id="backToLoginFromForgot" style="color: var(--text);">Wait, I remember it!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mega Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+            <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Logic for Popups & Country Code -->
+    <!-- International Telephone Input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        // 1. COUNTRY CODE & MOBILE NUMBER LOGIC
+        const phoneInputField = document.querySelector("#regMobile");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "in", // Default India (+91)
+            preferredCountries: ["in", "us", "uk", "au", "ca"], // Upar dikhne wale deshon ki list
+            separateDialCode: true, // +91 box ke andar alag se dikhega
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        // Sirf numbers type hone dena aur 10 digit se zyada nahi hone dena
+        phoneInputField.addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric chars
+            if(this.value.length > 10) {
+                this.value = this.value.slice(0, 10); // Max 10 digits
+            }
+        });
+
+
+        // 2. MODAL (POPUP) LOGIC
+        const openSignup = document.getElementById('openSignup');
+        const closeSignup = document.getElementById('closeSignup');
+        const signupModal = document.getElementById('signupModal');
+
+        openSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeSignup.addEventListener('click', () => {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        const openForgot = document.getElementById('openForgot');
+        const closeForgot = document.getElementById('closeForgot');
+        const forgotModal = document.getElementById('forgotModal');
+        const backToLoginFromForgot = document.getElementById('backToLoginFromForgot');
+
+        openForgot.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeForgot.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        backToLoginFromForgot.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Bahar click karne par popups band karna
+        window.addEventListener('click', (e) => {
+            if (e.target === signupModal) {
+                signupModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === forgotModal) {
+                forgotModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

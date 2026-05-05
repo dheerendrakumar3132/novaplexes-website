@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White-Label Reseller Program | Novaplexes</title>
+    <meta name="description" content="Join the Novaplexes Reseller Program. Sell premium Web, SEO, and AI services under your own brand with our elite white-label fulfillment.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Strict Homepage Colors) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #e2e8f0; max-width: 850px; margin: 0 auto; font-weight: 300; }
+
+        /* --- Value Proposition (Grid) --- */
+        .values-section { background: var(--bg-light); border-bottom: 1px solid var(--border); }
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .value-card { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); }
+        .value-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary); }
+        .value-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: inline-block; }
+        .value-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--dark); }
+
+        /* --- White-Label Solution (Split Layout with Photo) --- */
+        .white-label-showcase { padding: 100px 0; background: var(--bg-white); }
+        .showcase-row { display: flex; align-items: center; gap: 60px; }
+        .showcase-content { flex: 1; }
+        .showcase-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .showcase-content p { font-size: 1.1rem; margin-bottom: 25px; }
+        .showcase-image { flex: 1; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; }
+        .showcase-image img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .showcase-image::after { content: 'YOUR BRAND HERE'; position: absolute; top: 20px; right: 20px; background: var(--primary); color: white; padding: 8px 15px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* --- Visual Gallery / Success Dashboard Images --- */
+        .visual-gallery { padding: 100px 0; background: var(--dark); color: var(--bg-white); }
+        .visual-gallery .section-title h2 { color: var(--bg-white); }
+        .visual-gallery .section-title p { color: var(--text-light); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .gallery-img-card { border-radius: 12px; overflow: hidden; position: relative; height: 300px; cursor: pointer; }
+        .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.8; }
+        .gallery-img-card:hover img { transform: scale(1.08); opacity: 1; }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; transition: var(--transition); }
+        .gallery-overlay h3 { color: white; font-size: 1.4rem; margin-bottom: 5px; }
+
+        /* --- Reseller Tiers / Pricing --- */
+        .pricing { background: var(--bg-light); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-white); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .pricing-card.popular { border-color: var(--primary); border-width: 2px; }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 30px; margin-top: 15px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 12px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: var(--primary); margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Onboarding Steps --- */
+        .steps-section { padding: 100px 0; background: var(--bg-white); }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; }
+        .step-item { position: relative; }
+        .step-num { width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 20px; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .step-item h4 { font-size: 1.2rem; margin-bottom: 10px; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--dark); color: white; text-align: center; padding: 90px 0; }
+        .cta h2 { color: white; font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .showcase-row { flex-direction: column; gap: 40px; }
+            .showcase-image { width: 100%; height: 350px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Scale Your Agency With <br><span class="highlight" style="color: #60a5fa;">White-Label Excellence.</span></h1>
+            <p>Sell premium Web Dev, SEO, and AI services under your own brand name. We do all the technical work, while you keep 100% of the credit and high profit margins.</p>
+        </div>
+    </section>
+
+    <section id="benefits" class="section-padding values-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>The Power of the Novaplexes Reseller Network</h2>
+                <p>Don't turn away clients because of technical limitations. Leverage our elite team to fulfill any digital requirement.</p>
+            </div>
+            
+            <div class="value-grid">
+                <div class="value-card reveal">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>100% Invisible Fulfillment</h3>
+                    <p>Your clients will never know Novaplexes exists. We work strictly behind the scenes under your brand and NDAs.</p>
+                </div>
+                <div class="value-card reveal">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Wholesale Pricing</h3>
+                    <p>Get exclusive reseller-only rates that allow you to add significant margins and grow your agency's revenue.</p>
+                </div>
+                <div class="value-card reveal">
+                    <i class="fas fa-shield-check"></i>
+                    <h3>Premium Quality Control</h3>
+                    <p>We apply the same rigorous QA and delivery standards to your clients as we do to our own. Zero compromises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="white-label-showcase">
+        <div class="container">
+            <div class="showcase-row reveal">
+                <div class="showcase-content">
+                    <h2>Your Brand. <br><span class="highlight">Our Expertise.</span></h2>
+                    <p>Imagine having a team of 50+ senior developers, data scientists, and SEO masters at your disposal without the overhead of salaries or office space. That is exactly what the Novaplexes Reseller Program offers.</p>
+                    <p>We provide white-label reports, branded dashboards, and a dedicated project manager who communicates with you as an extension of your own team.</p>
+                    <a href="#contact" class="btn btn-primary">Download Reseller Kit</a>
+                </div>
+                <div class="showcase-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="Agency Analytics Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="visual-gallery">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Ready-to-Ship White-Label Assets</h2>
+                <p>We provide everything you need to sell professionally from day one.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="Marketing Reports">
+                    <div class="gallery-overlay">
+                        <h3>Branded Audit Reports</h3>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="Custom Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Client KPI Dashboards</h3>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop" alt="Strategy Deck">
+                    <div class="gallery-overlay">
+                        <h3>Pitch & Strategy Decks</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-padding pricing">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Reseller Membership Tiers</h2>
+                <p>Choose a tier based on your expected monthly project volume.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Starter Partner</h3>
+                    <div class="price">Wholesale <span>Rates</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Standard Wholesale Pricing</li>
+                        <li><i class="fas fa-check"></i> White-Label PDF Reports</li>
+                        <li><i class="fas fa-check"></i> Access to All Services</li>
+                        <li><i class="fas fa-check"></i> 48hr Proposal Turnaround</li>
+                        <li><i class="fas fa-check"></i> Pay-As-You-Go Fulfillment</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Apply Now</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">AGENCY GROWTH</div>
+                    <h3>Executive Agency</h3>
+                    <div class="price">Wholesale <span>-15%</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Extra 15% Off Wholesale Rates</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Director</li>
+                        <li><i class="fas fa-check"></i> White-Label Slack/Teams Access</li>
+                        <li><i class="fas fa-check"></i> Custom Branded BI Dashboards</li>
+                        <li><i class="fas fa-check"></i> Priority Project Queue</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Join Premium Tier</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise Reseller</h3>
+                    <div class="price">Custom <span>Retainer</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Dedicated Managed Team</li>
+                        <li><i class="fas fa-check"></i> Custom API Integrations</li>
+                        <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                        <li><i class="fas fa-check"></i> Co-Marketing & Lead Gen Support</li>
+                        <li><i class="fas fa-check"></i> Quarterly Strategic Planning</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Leadership</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="steps" class="section-padding steps-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>How to Start Your Reseller Business</h2>
+                <p>You can be selling our premium services under your own brand in just 4 simple steps.</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-item reveal">
+                    <div class="step-num">1</div>
+                    <h4>Submit Application</h4>
+                    <p>Tell us about your agency or business model through our inquiry form.</p>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num">2</div>
+                    <h4>Alignment Call</h4>
+                    <p>We'll discuss your goals, wholesale pricing, and sign ironclad NDAs.</p>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num">3</div>
+                    <h4>Receive Sales Kit</h4>
+                    <p>Get white-label case studies, pitch decks, and audit templates.</p>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num">4</div>
+                    <h4>Close & Fulfill</h4>
+                    <p>You close the client, we do the work, you take the credit and the profit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container reveal">
+            <h2>Ready to Expand Your Service List?</h2>
+            <p>Don't spend years building a technical team. Plug into Novaplexes today and start delivering enterprise-tier results to your clients tomorrow.</p>
+            <a href="mailto:novaplexes@zohomail.in" class="btn btn-primary" style="padding:15px 40px; font-size:1.1rem; border: 2px solid white;">Request Reseller Program Access</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20am%20interested%20in%20your%20Reseller%20Program!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

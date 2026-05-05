@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Research & Market Intelligence | Novaplexes</title>
+    <meta name="description" content="Make data-driven decisions with Novaplexes. Expert Business Research, Market Analysis, Competitor Intelligence, and Feasibility Studies.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section with Background Image --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #e2e8f0; max-width: 800px; margin: 0 auto 30px; font-weight: 300; }
+
+        /* --- Research Services Grid --- */
+        .research-services { background: var(--bg-light); }
+        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .research-card { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); position: relative; }
+        .research-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary); }
+        .research-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; display: inline-block; background: #eff6ff; padding: 18px; border-radius: 12px; }
+        .research-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .research-card p { margin-bottom: 20px; color: var(--text); font-size: 1.05rem; }
+
+        /* --- Visual Gallery / Data Insights (Images) --- */
+        .visual-data { padding: 100px 0; background: var(--bg-white); }
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .data-img-card { border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 350px; }
+        .data-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .data-img-card:hover img { transform: scale(1.08); }
+        .data-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; }
+        .data-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 5px; }
+        .data-overlay p { margin: 0; font-size: 0.95rem; color: #cbd5e1; }
+
+        /* --- Methodology Process --- */
+        .methodology { padding: 100px 0; background: var(--dark); color: var(--bg-white); }
+        .methodology .section-title h2 { color: var(--bg-white); }
+        .methodology .section-title p { color: var(--text-light); }
+        .meth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px; position: relative; }
+        .meth-step { text-align: center; padding: 30px 20px; background: var(--dark-light); border-radius: 12px; border: 1px solid #334155; position: relative; z-index: 1; }
+        .meth-step:hover { border-color: var(--primary); }
+        .meth-step .step-num { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 20px; font-size: 1.2rem; }
+        .meth-step h3 { color: var(--bg-white); font-size: 1.2rem; margin-bottom: 10px; }
+        .meth-step p { color: #94a3b8; font-size: 0.95rem; }
+
+        /* --- Pricing/Packages --- */
+        .pricing { background: var(--bg-light); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-white); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .pricing-card.popular { border-color: var(--primary); border-width: 2px; }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 30px; margin-top: 15px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 15px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: #10b981; margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--primary); color: var(--bg-white); text-align: center; padding: 90px 0; }
+        .cta h2 { color: var(--bg-white); font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Stop Guessing. <br><span class="highlight" style="color: #60a5fa;">Start Scaling with Data.</span></h1>
+            <p>Novaplexes provides in-depth business research, market intelligence, and competitor analysis to help you eliminate risks, spot trends, and make highly profitable decisions.</p>
+            <a href="#expertise" class="btn btn-outline" style="color: white; border-color: white; margin-top: 15px;">Explore Our Research Solutions</a>
+        </div>
+    </section>
+
+    <section id="expertise" class="section-padding research-services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Comprehensive Market Intelligence</h2>
+                <p>We transform raw market data into actionable strategies tailored specifically for your business growth.</p>
+            </div>
+            
+            <div class="research-grid">
+                <div class="research-card reveal">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Market & Industry Analysis</h3>
+                    <p>We evaluate market size, growth trajectories, TAM (Total Addressable Market), and macro-economic factors to validate your business ideas before you invest heavily.</p>
+                </div>
+
+                <div class="research-card reveal">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Competitor Intelligence</h3>
+                    <p>Discover exactly what your competitors are doing. We analyze their pricing, marketing funnels, customer acquisition strategies, and market gaps you can exploit.</p>
+                </div>
+
+                <div class="research-card reveal">
+                    <i class="fas fa-users"></i>
+                    <h3>Consumer Behavior & Insights</h3>
+                    <p>Understand your audience deeply. We conduct surveys, focus groups, and sentiment analysis to decode purchasing habits, pain points, and product demands.</p>
+                </div>
+
+                <div class="research-card reveal">
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>Feasibility Studies</h3>
+                    <p>Launching a new product or entering a new geography? We provide comprehensive feasibility reports covering financial, operational, and technical viability.</p>
+                </div>
+
+                <div class="research-card reveal">
+                    <i class="fas fa-binoculars"></i>
+                    <h3>Trend & Future Forecasting</h3>
+                    <p>Stay ahead of the curve. We use predictive analytics and industry mapping to identify upcoming trends and technological shifts in your specific sector.</p>
+                </div>
+
+                <div class="research-card reveal">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Financial Modeling</h3>
+                    <p>We build robust financial models, ROI projections, and cost-benefit analyses to help you secure funding from investors or optimize internal budgets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visuals" class="visual-data">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Visualizing Complex Data</h2>
+                <p>We don't just deliver boring spreadsheets. We create intuitive dashboards and visual reports that make complex data instantly understandable.</p>
+            </div>
+            
+            <div class="data-grid">
+                <div class="data-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="Data Analytics Dashboard">
+                    <div class="data-overlay">
+                        <h3>Interactive Dashboards</h3>
+                        <p>Real-time data visualization for C-level executives.</p>
+                    </div>
+                </div>
+                <div class="data-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop" alt="Team discussing strategy">
+                    <div class="data-overlay">
+                        <h3>Strategy Consulting</h3>
+                        <p>Turning raw data into actionable boardroom strategies.</p>
+                    </div>
+                </div>
+                <div class="data-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1000&auto=format&fit=crop" alt="Financial Charts and Graphs">
+                    <div class="data-overlay">
+                        <h3>Financial Projections</h3>
+                        <p>Accurate revenue forecasting and risk assessment modeling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="methodology">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Our Research Methodology</h2>
+                <p>A rigorous, 4-step scientific approach to gathering, verifying, and analyzing business intelligence.</p>
+            </div>
+            
+            <div class="meth-grid">
+                <div class="meth-step reveal">
+                    <div class="step-num">1</div>
+                    <h3>Data Harvesting</h3>
+                    <p>We collect raw data using primary sources (surveys, interviews) and secondary sources (industry journals, government databases, API scraping).</p>
+                </div>
+                <div class="meth-step reveal">
+                    <div class="step-num">2</div>
+                    <h3>Verification & Cleaning</h3>
+                    <p>Raw data is useless if it's flawed. We rigorously cross-reference, clean, and validate our datasets to ensure 100% accuracy and eliminate bias.</p>
+                </div>
+                <div class="meth-step reveal">
+                    <div class="step-num">3</div>
+                    <h3>Deep Analysis</h3>
+                    <p>Our analysts use statistical models, SWOT analysis, and predictive algorithms to find correlations, patterns, and hidden opportunities within the data.</p>
+                </div>
+                <div class="meth-step reveal">
+                    <div class="step-num">4</div>
+                    <h3>Strategic Reporting</h3>
+                    <p>We deliver comprehensive, beautifully designed reports containing actionable recommendations, rather than just data dumps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing section-padding">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Research & Intelligence Plans</h2>
+                <p>Tailored research packages designed to give you the competitive edge, regardless of your company size.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Market Snapshot</h3>
+                    <div class="price">Custom <span>/report</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic Industry Overview</li>
+                        <li><i class="fas fa-check"></i> Top 3 Competitor Analysis</li>
+                        <li><i class="fas fa-check"></i> Keyword & Search Trend Data</li>
+                        <li><i class="fas fa-check"></i> Target Audience Demographics</li>
+                        <li><i class="fas fa-check"></i> Delivery in 7-10 Days</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Request Snapshot</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Comprehensive Study</h3>
+                    <div class="price">Custom <span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Deep Market Sizing & TAM Analysis</li>
+                        <li><i class="fas fa-check"></i> In-depth Competitor Funnel Tear-down</li>
+                        <li><i class="fas fa-check"></i> Consumer Sentiment & Surveying</li>
+                        <li><i class="fas fa-check"></i> Pricing Strategy Optimization</li>
+                        <li><i class="fas fa-check"></i> 50+ Page Actionable Report Deck</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Start Deep Dive</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise Ongoing</h3>
+                    <div class="price">Let's Talk</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Continuous Monthly Market Monitoring</li>
+                        <li><i class="fas fa-check"></i> Live Competitor Tracker Dashboards</li>
+                        <li><i class="fas fa-check"></i> Advanced Financial Modeling & Feasibility</li>
+                        <li><i class="fas fa-check"></i> M&A (Mergers & Acquisitions) Target Scouting</li>
+                        <li><i class="fas fa-check"></i> Dedicated Research Analyst</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Advisory</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container reveal">
+            <h2>Don't Rely on Gut Feelings. Rely on Facts.</h2>
+            <p>One wrong business decision can cost you thousands. Let Novaplexes provide the market intelligence you need to dominate your industry with confidence.</p>
+            <a href="#contact" class="btn btn-dark" style="background:#0f172a; color:#fff; padding:15px 40px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1rem;">Schedule a Free Consultation</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20need%20business%20research%20services!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                       <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div> 
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

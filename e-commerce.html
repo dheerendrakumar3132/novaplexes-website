@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Development Services | Novaplexes</title>
+    <meta name="description" content="Build and scale your online store with Novaplexes. Expert Shopify, WooCommerce, Custom E-commerce development, and Conversion Rate Optimization.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --sale-accent: #f97316; /* Amber accent for E-commerce vibes */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+        .highlight-sale { color: var(--sale-accent); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+        .btn-sale { background: var(--sale-accent); color: var(--dark); border: none; }
+        .btn-sale:hover { background: #d97706; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section with E-commerce Background Image --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #e2e8f0; max-width: 800px; margin: 0 auto 30px; font-weight: 300; }
+
+        /* --- E-commerce Services Grid --- */
+        .ecom-services { background: var(--bg-light); }
+        .ecom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .ecom-card { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+        .ecom-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary); }
+        .ecom-card i { font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; display: inline-block; background: #eff6ff; padding: 18px; border-radius: 12px; }
+        .ecom-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .ecom-card p { margin-bottom: 20px; color: var(--text); font-size: 1.05rem; }
+
+        /* --- Visual Gallery / Store Mockups (Images) --- */
+        .visual-gallery { padding: 100px 0; background: var(--bg-white); }
+        .visual-gallery .section-title h2 { color: var(--dark); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .gallery-img-card { border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 400px; cursor: pointer; }
+        .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-img-card:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; opacity: 0; transition: var(--transition); }
+        .gallery-img-card:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 5px; }
+        .gallery-overlay p { margin: 0; font-size: 0.95rem; color: var(--sale-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Store Build Process --- */
+        .process-section { padding: 100px 0; background: var(--dark); color: var(--bg-white); }
+        .process-section .section-title h2 { color: var(--bg-white); }
+        .process-section .section-title p { color: var(--text-light); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px; position: relative; }
+        .process-step { text-align: center; padding: 30px 20px; background: var(--dark-light); border-radius: 12px; border: 1px solid #334155; position: relative; z-index: 1; transition: var(--transition); }
+        .process-step:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .process-step .step-num { width: 50px; height: 50px; background: var(--sale-accent); color: var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 20px; font-size: 1.3rem; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4); }
+        .process-step h3 { color: var(--bg-white); font-size: 1.2rem; margin-bottom: 10px; }
+        .process-step p { color: #94a3b8; font-size: 0.95rem; }
+
+        /* --- Tech Stack & Partners --- */
+        .tech-stack { padding: 80px 0; background: var(--bg-white); text-align: center; border-bottom: 1px solid var(--border); }
+        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+        .tech-item { width: 140px; }
+        .tech-item i { font-size: 3.5rem; color: var(--dark); margin-bottom: 15px; transition: var(--transition); }
+        .tech-item:hover i { color: var(--sale-accent); transform: translateY(-5px); }
+        .tech-item h4 { font-size: 1.1rem; color: var(--text); font-weight: 600; }
+
+        /* --- Pricing/Packages --- */
+        .pricing { background: var(--bg-light); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-white); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .pricing-card.popular { border-color: var(--sale-accent); border-width: 2px; }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--sale-accent); color: var(--dark); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 30px; margin-top: 15px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 15px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: #10b981; margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--primary); color: var(--bg-white); text-align: center; padding: 90px 0; }
+        .cta h2 { color: var(--bg-white); font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Build an Online Store That <br><span class="highlight-sale">Converts Like Crazy.</span></h1>
+            <p>From high-performance Shopify stores to custom E-commerce architectures. Novaplexes builds scalable online retail experiences designed to maximize your revenue and retain customers.</p>
+            <a href="#expertise" class="btn btn-sale" style="margin-top: 15px; padding: 15px 35px; font-size: 1.1rem; border-radius: 8px;">Explore E-commerce Solutions</a>
+        </div>
+    </section>
+
+    <section id="expertise" class="section-padding ecom-services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>End-to-End E-Commerce Expertise</h2>
+                <p>We don't just build websites; we build profitable online businesses equipped with the latest retail technology.</p>
+            </div>
+            
+            <div class="ecom-grid">
+                <div class="ecom-card reveal">
+                    <i class="fab fa-shopify"></i>
+                    <h3>Shopify Development</h3>
+                    <p>We build highly customized, lightning-fast Shopify and Shopify Plus stores. From custom theme creation to complex app integrations and inventory syncing.</p>
+                </div>
+
+                <div class="ecom-card reveal">
+                    <i class="fab fa-wordpress"></i>
+                    <h3>WooCommerce Solutions</h3>
+                    <p>Want full control over your code and hosting? We design robust WooCommerce stores on WordPress, optimized for high traffic and maximum SEO visibility.</p>
+                </div>
+
+                <div class="ecom-card reveal">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Seamless Store Migration</h3>
+                    <p>Moving from Magento, Wix, or an old platform? We securely migrate your products, customer data, and order history to Shopify or Woo without losing SEO rankings.</p>
+                </div>
+
+                <div class="ecom-card reveal">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Conversion Rate Optimization (CRO)</h3>
+                    <p>Stop losing abandoned carts. We redesign product pages, optimize checkout flows, and implement A/B testing to turn more visitors into paying customers.</p>
+                </div>
+
+                <div class="ecom-card reveal">
+                    <i class="fas fa-code"></i>
+                    <h3>Custom E-Commerce Architectures</h3>
+                    <p>For enterprise retail, standard platforms aren't enough. We build Headless E-commerce solutions using React, Next.js, and custom backend APIs for ultimate speed.</p>
+                </div>
+
+                <div class="ecom-card reveal">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Dropshipping & Automations</h3>
+                    <p>Launch your brand without holding inventory. We integrate seamless dropshipping apps (Oberlo, DSers, Zendrop) and fully automate your order fulfillment pipeline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="visual-gallery">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Digital Storefronts Designed to Sell</h2>
+                <p>A look at the premium, high-converting E-commerce experiences we create.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop" alt="Fashion E-commerce Website Mockup">
+                    <div class="gallery-overlay">
+                        <h3>Fashion & Apparel</h3>
+                        <p>High-End Shopify Plus Store</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=1000&auto=format&fit=crop" alt="Mobile Shopping App">
+                    <div class="gallery-overlay">
+                        <h3>Mobile-First Shopping</h3>
+                        <p>Flawless Checkout UX</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="E-commerce Analytics Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Custom Dashboards</h3>
+                        <p>Real-Time Revenue Tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Our E-Commerce Ecosystem</h2>
+                <p>We partner with and develop on the world's most trusted retail technologies.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item"><i class="fab fa-shopify"></i><h4>Shopify</h4></div>
+                <div class="tech-item"><i class="fab fa-wordpress"></i><h4>WooCommerce</h4></div>
+                <div class="tech-item"><i class="fab fa-magento"></i><h4>Magento</h4></div>
+                <div class="tech-item"><i class="fab fa-stripe"></i><h4>Stripe</h4></div>
+                <div class="tech-item"><i class="fab fa-paypal"></i><h4>PayPal</h4></div>
+                <div class="tech-item"><i class="fas fa-shipping-fast"></i><h4>ShipStation</h4></div>
+                <div class="tech-item"><i class="fas fa-envelope-open-text"></i><h4>Klaviyo</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>How We Build Your Store</h2>
+                <p>A proven, step-by-step methodology from initial concept to your first sale.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-num">1</div>
+                    <h3>Strategy & UX</h3>
+                    <p>We analyze your target audience, plan the site architecture, and wireframe the perfect user journey to maximize conversions.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">2</div>
+                    <h3>UI Design & Branding</h3>
+                    <p>Our designers craft beautiful, mobile-responsive mockups that align perfectly with your brand identity and product catalog.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">3</div>
+                    <h3>Development & Setup</h3>
+                    <p>We code the theme, configure payment gateways (Stripe/Razorpay), set up shipping zones, and integrate essential marketing apps.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">4</div>
+                    <h3>Testing & Launch</h3>
+                    <p>Rigorous QA testing across all devices. We ensure lightning-fast load times, flawless checkout, and then launch your store to the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing section-padding">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>E-Commerce Development Plans</h2>
+                <p>Transparent pricing whether you are launching your first product or scaling a catalog of thousands.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Starter Store</h3>
+                    <div class="price">Custom <span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Standard Shopify/Woo Theme</li>
+                        <li><i class="fas fa-check"></i> Up to 50 Products Upload</li>
+                        <li><i class="fas fa-check"></i> Payment Gateway Setup</li>
+                        <li><i class="fas fa-check"></i> Essential Apps Integration</li>
+                        <li><i class="fas fa-check"></i> Basic On-Page SEO</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Start Selling</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">AGENCY RECOMMENDED</div>
+                    <h3>Growth E-Commerce</h3>
+                    <div class="price">Custom <span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Fully Custom Store UI/UX Design</li>
+                        <li><i class="fas fa-check"></i> Unlimited Product Categories</li>
+                        <li><i class="fas fa-check"></i> Advanced CRO & Speed Optimization</li>
+                        <li><i class="fas fa-check"></i> Klaviyo / Email Automation Setup</li>
+                        <li><i class="fas fa-check"></i> Advanced Inventory & Shipping Logic</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="background: var(--sale-accent); border-color: var(--sale-accent); color: var(--dark);">Scale Your Brand</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise / Headless</h3>
+                    <div class="price">Let's Talk</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Shopify Plus or Custom React Front-end</li>
+                        <li><i class="fas fa-check"></i> Complex ERP & CRM Integrations</li>
+                        <li><i class="fas fa-check"></i> Multi-Currency & Multi-Language Support</li>
+                        <li><i class="fas fa-check"></i> Custom App & Plugin Development</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Architecture Team</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container reveal">
+            <h2>Ready to Dominate Retail?</h2>
+            <p>Don't settle for a basic template that doesn't sell. Let Novaplexes build you a high-converting, scalable online store that your customers will love.</p>
+            <a href="#contact" class="btn btn-dark" style="background:#0f172a; color:#fff; padding:15px 40px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1rem;">Request a Free Store Audit</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20need%20help%20building%20an%20e-commerce%20store!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

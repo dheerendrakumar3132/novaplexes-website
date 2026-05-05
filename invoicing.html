@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Invoicing & Billing Solutions | Novaplexes</title>
+    <meta name="description" content="Get paid faster with Novaplexes. Automated invoicing, custom billing templates, subscription management, and payment gateway integrations.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --invoice-accent: #f97316; /* Emerald Green for Finance/Money vibe */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+        .highlight-invoice { color: var(--invoice-accent); }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+        .btn-invoice { background: var(--invoice-accent); color: white; border: none; }
+        .btn-invoice:hover { background: #059669; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section with Finance Background Image --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 4rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.1; }
+        .page-header p { font-size: 1.25rem; color: #e2e8f0; max-width: 850px; margin: 0 auto 30px; font-weight: 300; }
+
+        /* --- Invoicing Services Grid --- */
+        .invoice-services { background: var(--bg-light); }
+        .invoice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .invoice-card { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+        .invoice-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--invoice-accent); }
+        .invoice-card i { font-size: 2.8rem; color: var(--invoice-accent); margin-bottom: 25px; display: inline-block; background: #ecfdf5; padding: 18px; border-radius: 12px; transition: var(--transition); }
+        .invoice-card:hover i { background: var(--invoice-accent); color: white; }
+        .invoice-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .invoice-card p { margin-bottom: 20px; color: var(--text); font-size: 1.05rem; }
+
+        /* --- Visual Gallery / Billing Dashboards (Images) --- */
+        .visual-gallery { padding: 100px 0; background: var(--bg-white); }
+        .visual-gallery .section-title h2 { color: var(--dark); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .gallery-img-card { border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 400px; cursor: pointer; }
+        .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-img-card:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; opacity: 0; transition: var(--transition); }
+        .gallery-img-card:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 5px; }
+        .gallery-overlay p { margin: 0; font-size: 0.95rem; color: var(--invoice-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Tech Stack / Integrations --- */
+        .integrations { padding: 80px 0; background: var(--dark); text-align: center; color: white; }
+        .integrations .section-title h2 { color: white; }
+        .integrations .section-title p { color: var(--text-light); }
+        .int-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+        .int-item { width: 140px; }
+        .int-item i { font-size: 3.5rem; color: var(--text-light); margin-bottom: 15px; transition: var(--transition); }
+        .int-item:hover i { color: var(--invoice-accent); transform: translateY(-5px); }
+        .int-item h4 { font-size: 1.1rem; color: white; font-weight: 600; }
+
+        /* --- Methodology / Workflow Pipeline --- */
+        .process-section { padding: 100px 0; background: var(--bg-light); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px; position: relative; }
+        .process-step { text-align: center; padding: 40px 20px; background: var(--bg-white); border-radius: 12px; border: 1px solid var(--border); position: relative; z-index: 1; transition: var(--transition); }
+        .process-step:hover { border-color: var(--invoice-accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1); }
+        .process-step .step-icon { font-size: 2.5rem; color: var(--invoice-accent); margin-bottom: 20px; }
+        .process-step h3 { color: var(--dark); font-size: 1.2rem; margin-bottom: 10px; }
+        .process-step p { color: var(--text); font-size: 0.95rem; }
+
+        /* --- Pricing/Packages --- */
+        .pricing { padding: 100px 0; background: var(--bg-white); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--bg-light); padding: 50px 40px; border-radius: 16px; text-align: center; position: relative; border: 1px solid var(--border); transition: var(--transition); }
+        .pricing-card:hover { border-color: var(--invoice-accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); background: var(--bg-white); }
+        .pricing-card.popular { border-color: var(--invoice-accent); border-width: 2px; background: var(--bg-white); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--invoice-accent); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; }
+        .pricing-card h3 { color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 30px; margin-top: 15px; }
+        .price span { font-size: 1rem; color: var(--text); font-weight: 400; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 40px; }
+        .pricing-features li { margin-bottom: 15px; color: var(--text); display: flex; gap: 10px; align-items: flex-start; }
+        .pricing-features i { color: var(--invoice-accent); margin-top: 5px; }
+        .pricing-card .btn { width: 100%; }
+
+        /* --- Call to Action --- */
+        .cta { background: var(--invoice-accent); color: white; text-align: center; padding: 90px 0; }
+        .cta h2 { color: white; font-size: 2.8rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.8rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>Get Paid Faster. <br><span class="highlight-invoice">Automate Your Cash Flow.</span></h1>
+            <p>Stop chasing late payments. Novaplexes builds and integrates smart invoicing solutions, custom billing portals, and recurring payment systems that make getting paid effortless.</p>
+            <a href="#expertise" class="btn btn-invoice" style="margin-top: 15px; padding: 15px 35px; font-size: 1.1rem; border-radius: 8px;">Explore Billing Solutions</a>
+        </div>
+    </section>
+
+    <section id="expertise" class="section-padding invoice-services">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Enterprise-Grade Billing Capabilities</h2>
+                <p>We set up secure, compliant, and beautifully designed invoicing ecosystems tailored to your business model.</p>
+            </div>
+            
+            <div class="invoice-grid">
+                <div class="invoice-card reveal">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Custom Branded Invoices</h3>
+                    <p>First impressions matter. We design highly professional, custom HTML/PDF invoice templates that perfectly reflect your brand identity and include 'Pay Now' buttons.</p>
+                </div>
+
+                <div class="invoice-card reveal">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Recurring Subscriptions</h3>
+                    <p>Selling SaaS or retainer services? We implement automated recurring billing engines that charge credit cards securely on a monthly or annual basis without manual effort.</p>
+                </div>
+
+                <div class="invoice-card reveal">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Payment Gateway Setup</h3>
+                    <p>Accept payments globally. We seamlessly integrate Stripe, PayPal, Razorpay, and Apple Pay directly into your invoices, ensuring a frictionless checkout for clients.</p>
+                </div>
+
+                <div class="invoice-card reveal">
+                    <i class="fas fa-bell"></i>
+                    <h3>Automated Reminders & Dunning</h3>
+                    <p>Eliminate awkward "where is my money?" emails. We set up automated follow-up sequences for upcoming, due, and overdue invoices, recovering lost revenue.</p>
+                </div>
+
+                <div class="invoice-card reveal">
+                    <i class="fas fa-globe"></i>
+                    <h3>Multi-Currency & Tax Compliance</h3>
+                    <p>Selling internationally? We configure dynamic tax calculation (GST, VAT, Sales Tax) and multi-currency support so you remain compliant in every jurisdiction.</p>
+                </div>
+
+                <div class="invoice-card reveal">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Accounting Software Sync</h3>
+                    <p>Say goodbye to double data entry. We connect your invoicing portal directly with QuickBooks, Xero, or FreshBooks so your ledger is always up to date.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="visual-gallery">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Billing Interfaces Built for Scale</h2>
+                <p>A look at the intuitive finance dashboards and sleek invoice templates we configure.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=1000&auto=format&fit=crop" alt="Professional Invoice Template">
+                    <div class="gallery-overlay">
+                        <h3>Custom PDF Templates</h3>
+                        <p>Branded, Professional, and Clear</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="Financial Tracking Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Revenue Dashboards</h3>
+                        <p>Track Outstanding & Paid Invoices</p>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop" alt="Mobile Payment Interface">
+                    <div class="gallery-overlay">
+                        <h3>Frictionless Checkout</h3>
+                        <p>1-Click 'Pay Now' Mobile Links</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="integrations">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Seamless Integrations</h2>
+                <p>We connect your billing process with the world's most trusted financial software.</p>
+            </div>
+            <div class="int-grid">
+                <div class="int-item"><i class="fab fa-stripe"></i><h4>Stripe</h4></div>
+                <div class="int-item"><i class="fab fa-paypal"></i><h4>PayPal</h4></div>
+                <div class="int-item"><i class="fas fa-file-invoice"></i><h4>QuickBooks</h4></div>
+                <div class="int-item"><i class="fas fa-calculator"></i><h4>Xero</h4></div>
+                <div class="int-item"><i class="fas fa-receipt"></i><h4>Zoho Books</h4></div>
+                <div class="int-item"><i class="fas fa-money-check-alt"></i><h4>Razorpay</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>The Smart Billing Workflow</h2>
+                <p>We build a pipeline that takes you from project completion to cash-in-bank with zero friction.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>1. Generate</h3>
+                    <p>Create professional invoices in seconds from pre-filled templates, or have them generated automatically based on CRM deals or time-tracking tools.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h3>2. Send & Notify</h3>
+                    <p>Invoices are emailed to clients with a secure, embedded "Pay Now" button, allowing them to settle the bill via Card, ACH, or UPI instantly.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-icon"><i class="fas fa-clock"></i></div>
+                    <h3>3. Track & Remind</h3>
+                    <p>The system tracks when the client opens the invoice. If unpaid, polite, automated follow-up sequences are triggered before and after the due date.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>4. Paid & Synced</h3>
+                    <p>Funds hit your bank account. The invoice is marked as paid, a receipt is sent to the client, and the data is automatically synced to your accounting software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Setup & Integration Plans</h2>
+                <p>One-time investments that permanently fix your cash flow delays.</p>
+            </div>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>Freelancer / Agency</h3>
+                    <div class="price">Custom <span>/setup</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic Invoicing Tool Setup (e.g., Wave)</li>
+                        <li><i class="fas fa-check"></i> 2 Custom Branded Templates</li>
+                        <li><i class="fas fa-check"></i> Stripe & PayPal Integration</li>
+                        <li><i class="fas fa-check"></i> Automated Reminder Setup</li>
+                        <li><i class="fas fa-check"></i> Training & Handover Call</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Setup Basic Billing</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">BUSINESS ACCELERATOR</div>
+                    <h3>Automated Cash Flow</h3>
+                    <div class="price">Custom <span>/setup</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Full QuickBooks / Xero Setup</li>
+                        <li><i class="fas fa-check"></i> Subscription & Retainer Automation</li>
+                        <li><i class="fas fa-check"></i> Multi-Currency & GST/VAT Config</li>
+                        <li><i class="fas fa-check"></i> CRM to Invoice Integration (Zapier)</li>
+                        <li><i class="fas fa-check"></i> Complex Dunning (Failed Payment) Setup</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-invoice">Automate My Billing</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Custom Portal Dev</h3>
+                    <div class="price">Let's Talk</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Custom Coded Client Billing Dashboard</li>
+                        <li><i class="fas fa-check"></i> Direct API Integrations</li>
+                        <li><i class="fas fa-check"></i> Enterprise Usage & Role Permissions</li>
+                        <li><i class="fas fa-check"></i> White-Labeled Payment Gateways</li>
+                        <li><i class="fas fa-check"></i> Dedicated Financial Tech Support</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Contact Engineering</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container reveal">
+            <h2>Stop Wasting Time Chasing Payments.</h2>
+            <p>Focus on delivering great work. Let Novaplexes build a seamless billing infrastructure that ensures you get paid accurately and on time, every time.</p>
+            <a href="#contact" class="btn btn-dark" style="background:#0f172a; color:#fff; padding:15px 40px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1rem; border: 2px solid white;">Request a Free Consultation</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20want%20to%20automate%20my%20invoicing!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>

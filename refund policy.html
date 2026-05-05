@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund & Cancellation Policy | Novaplexes</title>
+    <meta name="description" content="Read the Refund and Cancellation Policy for Novaplexes. Understand our terms regarding web development, SEO, and digital marketing services.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Core Theme (Strict Home Page Colors) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.8; background: var(--bg-white); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.3; }
+        .highlight { color: var(--primary); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; margin: 0; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Policy Page Styling --- */
+        .page-header { padding: 180px 0 80px; background: var(--bg-light); text-align: center; border-bottom: 1px solid var(--border); }
+        .page-header h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        
+        .content-area { padding: 80px 0; max-width: 900px; margin: 0 auto; }
+        .policy-body h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        .policy-body p { margin-bottom: 20px; font-size: 1.1rem; text-align: justify; }
+        .policy-body ul { margin-bottom: 25px; padding-left: 25px; }
+        .policy-body li { margin-bottom: 12px; list-style: square; font-size: 1.05rem; }
+        .update-date { font-weight: bold; color: var(--primary); display: block; margin-bottom: 30px; }
+
+        /* --- MEGA FOOTER (STRICT HOME PAGE STYLE) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; margin-top: 50px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2.3rem; }
+            .footer-grid-mega { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Header Title -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Refund & <span class="highlight">Cancellation Policy</span></h1>
+            <p>Clear, transparent, and fair guidelines for our digital services.</p>
+        </div>
+    </section>
+
+    <!-- Detailed Content -->
+    <div class="container">
+        <section class="content-area">
+            <div class="policy-body">
+                <span class="update-date">Effective Date: May 01, 2026</span>
+
+                <h2>1. General Overview</h2>
+                <p>At Novaplexes, we strive to deliver the highest quality of digital services, including web development, SEO, digital marketing, AI automation, and more. Due to the bespoke and labor-intensive nature of digital agency work, our refund policy varies depending on the specific service provided and the stage of the project. By engaging Novaplexes, you agree to the terms outlined in this policy.</p>
+
+                <h2>2. Web Development & Design Services</h2>
+                <p>Web design and development projects are milestone-based and require extensive time, research, and coding. Therefore, refunds are structured as follows:</p>
+                <ul>
+                    <li><strong>Initial Deposit:</strong> For project-based work, we typically require an upfront deposit (usually 50%). This deposit covers the initial discovery, strategy, wireframing, and environment setup. <strong>This deposit is strictly non-refundable</strong> once any actual work or strategy planning has commenced.</li>
+                    <li><strong>Mid-Project Cancellations:</strong> If a project is cancelled or postponed by the client after the initial design concepts have been approved, we retain the initial deposit and reserve the right to invoice for all work completed up to the point of cancellation.</li>
+                    <li><strong>Post-Launch:</strong> Once a website or digital product is approved and launched on your server or live domain, no refunds will be issued under any circumstances.</li>
+                </ul>
+
+                <h2>3. SEO & Digital Marketing Services</h2>
+                <p>Search Engine Optimization (SEO) and Digital Marketing (PPC, Social Media) are ongoing services that require continuous effort, monitoring, and optimization.</p>
+                <ul>
+                    <li><strong>No Guarantees:</strong> While we use industry best practices to achieve the best possible results, Novaplexes cannot guarantee specific search engine rankings, sales volumes, or ROI, as these depend on third-party algorithms (like Google) and market conditions. Therefore, we do not offer refunds based on performance expectations.</li>
+                    <li><strong>Monthly Retainers:</strong> SEO and marketing services are billed month-to-month or via fixed-term contracts. Payments for the current month's retainer are non-refundable.</li>
+                    <li><strong>Cancellation Notice:</strong> Clients must provide a written notice of cancellation at least 15 days before the next billing cycle. If notice is given later than 15 days, the client will be billed for the subsequent month.</li>
+                </ul>
+
+                <h2>4. Third-Party Costs (Non-Refundable)</h2>
+                <p>During the course of delivering our services, Novaplexes may purchase assets or services on your behalf. These costs are completely non-refundable and include, but are not limited to:</p>
+                <ul>
+                    <li>Advertising spend paid directly to platforms like Google Ads, Meta (Facebook/Instagram), or TikTok.</li>
+                    <li>Domain name registrations and SSL certificates.</li>
+                    <li>Third-party web hosting fees or cloud server costs.</li>
+                    <li>Premium themes, premium plugins, stock images, or software licenses purchased specifically for your project.</li>
+                </ul>
+
+                <h2>5. Hourly Work and Consulting</h2>
+                <p>Any services billed on an hourly basis, including consulting, emergency bug fixes, server migrations, or technical audits, are strictly non-refundable. You are paying for the time and expertise of our engineers and strategists, which cannot be returned once expended.</p>
+
+                <h2>6. "No-Show" and Communication Delays</h2>
+                <p>Successful digital projects require timely feedback and collaboration from the client. If a project stalls for more than 30 days due to a lack of communication, feedback, or content provision from the client's side, Novaplexes reserves the right to put the project on hold or terminate it entirely. In such cases, no refunds will be issued for funds already paid, and a remobilization fee may apply to restart the project.</p>
+
+                <h2>7. How to Request a Cancellation</h2>
+                <p>If you wish to cancel an ongoing service or project, you must submit a formal request in writing to your dedicated Account Manager or our billing department at <strong>billing@novaplexes.com</strong>. Telephone requests will not be considered valid for cancellation.</p>
+                <p>Upon receiving a valid cancellation request, we will halt all further work, calculate any outstanding balances for work already completed, and issue a final invoice if applicable.</p>
+
+                <h2>8. Policy Modifications</h2>
+                <p>Novaplexes reserves the right to modify or update this Refund & Cancellation Policy at any time without prior notice. The updated policy will be effective immediately upon posting to this website. We encourage you to review this page periodically.</p>
+
+                <h2>9. Contact Us</h2>
+                <p>If you have any questions or require clarification regarding our refund and cancellation practices, please contact us:</p>
+                <p><strong>Email:</strong> legal@novaplexes.com<br>
+                <strong>Office:</strong> Ghatampur, Kanpur Nagar, Uttar Pradesh, India - 209206</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mega Footer (HOME PAGE STYLE) -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919140092735" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

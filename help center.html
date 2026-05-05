@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center & Support | Novaplexes</title>
+    <meta name="description" content="Welcome to the Novaplexes Help Center. Find answers to your questions, browse our knowledge base, or contact our support team.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Variables & Core Styles (Brand Consistency) --- */
+        :root {
+            --primary: #f97316;
+            --primary-hover: #1d4ed8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --support-accent: #f97316; /* Trusting Blue for Support */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.7; background: var(--bg-white); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 800; line-height: 1.2; }
+        .section-padding { padding: 100px 0; }
+        .section-title { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-title p { font-size: 1.1rem; color: var(--text); }
+        .highlight { color: var(--primary); }
+        .highlight-support { color: #38bdf8; }
+
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: var(--transition); cursor: pointer; border: 2px solid transparent; }
+        .btn-primary { background: var(--primary); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .btn-outline { background: transparent; color: var(--dark); border-color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: var(--bg-white); transform: translateY(-3px); }
+
+        /* --- Header / Navbar --- */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+
+        /* --- Hero Section (Search Focused) --- */
+        .page-header { 
+            padding: 200px 0 140px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; 
+            color: var(--bg-white); 
+            text-align: center; 
+            position: relative; 
+        }
+        .page-header h1 { font-size: 3.5rem; color: var(--bg-white); margin-bottom: 20px; line-height: 1.2; }
+        .page-header p { font-size: 1.2rem; color: #e2e8f0; max-width: 700px; margin: 0 auto 40px; font-weight: 300; }
+        
+        .search-container { max-width: 650px; margin: 0 auto; position: relative; }
+        .search-container input { width: 100%; padding: 20px 30px; font-size: 1.1rem; border: none; border-radius: 50px; outline: none; box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .search-container button { position: absolute; right: 10px; top: 10px; bottom: 10px; background: var(--primary); color: white; border: none; border-radius: 40px; padding: 0 30px; font-weight: bold; cursor: pointer; transition: var(--transition); }
+        .search-container button:hover { background: var(--primary-hover); }
+
+        /* --- Help Categories Grid --- */
+        .help-categories { background: var(--bg-light); margin-top: -50px; padding-bottom: 100px; position: relative; z-index: 10; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .cat-card { background: var(--bg-white); padding: 40px 30px; border-radius: 16px; border: 1px solid var(--border); transition: var(--transition); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); cursor: pointer; }
+        .cat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--support-accent); }
+        .cat-card i { font-size: 2.8rem; color: var(--support-accent); margin-bottom: 20px; display: inline-block; }
+        .cat-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark); }
+        .cat-card p { color: var(--text); font-size: 0.95rem; margin-bottom: 15px; }
+        .cat-card span { color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+
+        /* --- Visual Support Images --- */
+        .visual-gallery { padding: 80px 0; background: var(--bg-white); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .gallery-img-card { border-radius: 16px; overflow: hidden; position: relative; height: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-img-card:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; }
+        .gallery-overlay h3 { color: white; font-size: 1.3rem; margin-bottom: 5px; }
+
+        /* --- FAQ Accordion Section --- */
+        .faq-section { padding: 100px 0; background: var(--bg-light); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--bg-white); margin-bottom: 15px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; transition: var(--transition); }
+        .faq-item:hover { border-color: var(--support-accent); }
+        .faq-question { padding: 25px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; color: var(--dark); font-size: 1.1rem; }
+        .faq-question i { transition: transform 0.3s ease; color: var(--primary); }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text); }
+        .faq-item.active .faq-answer { padding: 0 25px 25px; max-height: 400px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        /* --- Contact Support Options --- */
+        .contact-support { padding: 100px 0; background: var(--dark); color: white; }
+        .contact-support .section-title h2 { color: white; }
+        .contact-support .section-title p { color: var(--text-light); }
+        .support-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .support-box { background: var(--dark-light); padding: 40px; border-radius: 16px; text-align: center; border: 1px solid #334155; transition: var(--transition); }
+        .support-box:hover { transform: translateY(-5px); border-color: var(--support-accent); background: #1e293b; }
+        .support-box i { font-size: 3rem; color: var(--bg-white); margin-bottom: 20px; background: var(--primary); width: 80px; height: 80px; line-height: 80px; border-radius: 50%; }
+        .support-box h3 { color: white; font-size: 1.5rem; margin-bottom: 10px; }
+        .support-box p { color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem; }
+
+        /* --- Mega Footer CSS (Exact Match) --- */
+        footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
+        .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
+        .footer-brand-large { max-width: 600px; }
+        .footer-brand-large h2 { color: var(--bg-white); margin-bottom: 15px; }
+        .footer-grid-mega { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .footer-col h3 { color: var(--bg-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-light); text-decoration: none; transition: var(--transition); display: inline-block; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(5px); }
+        .badge-new { background: #10b981; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold; vertical-align: middle; }
+        .mt-25 { margin-top: 35px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--dark-light); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+        .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- WhatsApp Float & Animations --- */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #1ebe57; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .page-header h1 { font-size: 2.5rem; }
+            .search-container input { padding: 15px 20px; font-size: 1rem; }
+            .search-container button { padding: 0 20px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="website.html">Website</a></li>
+                    <li><a href="seo.html" class="highlight">Seo</a></li>
+                    <li><a href="advertising.html">Advertising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="help center.html">Help</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Start a Project</a></li>
+                    <li><a href="login.html" class="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container reveal">
+            <h1>How can we help you <span class="highlight-support">today?</span></h1>
+            <p>Search for tutorials, troubleshooting guides, billing information, or technical documentation.</p>
+            
+            <div class="search-container">
+                <input type="text" placeholder="e.g., 'How to update Shopify billing' or 'SEO tracking'">
+                <button type="submit"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="help-categories">
+        <div class="container">
+            <div class="category-grid">
+                
+                <div class="cat-card reveal">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Account & Billing</h3>
+                    <p>Manage your subscriptions, view invoices, and update payment methods securely.</p>
+                    <span>12 Articles &rarr;</span>
+                </div>
+
+                <div class="cat-card reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Website Support</h3>
+                    <p>Guides for WordPress, Shopify, hosting, domain setup, and CMS troubleshooting.</p>
+                    <span>24 Articles &rarr;</span>
+                </div>
+
+                <div class="cat-card reveal">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>SEO & Marketing</h3>
+                    <p>Understand your analytics dashboards, ad spend reports, and ranking updates.</p>
+                    <span>18 Articles &rarr;</span>
+                </div>
+
+                <div class="cat-card reveal">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI & Automation</h3>
+                    <p>Learn how to manage your custom Zapier integrations and AI Chatbot responses.</p>
+                    <span>10 Articles &rarr;</span>
+                </div>
+
+                <div class="cat-card reveal">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Email Campaigns</h3>
+                    <p>Tutorials on updating Klaviyo templates, managing lists, and reading campaign data.</p>
+                    <span>15 Articles &rarr;</span>
+                </div>
+
+                <div class="cat-card reveal">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Policies & Security</h3>
+                    <p>Information on data privacy, GDPR compliance, and service level agreements (SLAs).</p>
+                    <span>8 Articles &rarr;</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="visual-gallery">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Our Support Infrastructure</h2>
+                <p>We believe in human-led, technology-assisted support. Real experts are always here to help.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop" alt="Support Team Member">
+                    <div class="gallery-overlay">
+                        <h3>Dedicated Account Managers</h3>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop" alt="Team Collaboration">
+                    <div class="gallery-overlay">
+                        <h3>Rapid Technical Triage</h3>
+                    </div>
+                </div>
+                <div class="gallery-img-card reveal">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" alt="Workspace and laptop">
+                    <div class="gallery-overlay">
+                        <h3>24/7 Monitoring Systems</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to the most common queries from our clients.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">How long does it take to build a custom website? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>A standard business website typically takes 3-4 weeks from discovery to launch. Complex E-commerce stores (Shopify/WooCommerce) or custom web applications usually take 6-10 weeks depending on the features and integrations required.</p></div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I track the ROI of my marketing campaigns? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Once you are onboarded, you will be provided access to a live, custom Data Dashboard (built on Looker Studio or Power BI). Here, you can track ad spend, leads generated, Cost Per Acquisition (CPA), and overall Return on Ad Spend (ROAS) in real-time.</p></div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is your typical response time for support tickets? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>For active retainers and management clients, our standard SLA response time is under 4 hours during business days. Critical server or website downtime issues are flagged automatically to our engineering team and handled 24/7.</p></div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I upgrade or downgrade my service plans? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Absolutely. We offer flexible, month-to-month management plans. If you need to scale up your ad spend or pause a specific service, simply notify your dedicated Account Manager 15 days before your next billing cycle.</p></div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does the billing and invoicing process work? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>For project-based work, we typically require a 50% upfront deposit and 50% upon completion. For ongoing retainers (SEO, Ads, Management), billing is automated securely via Stripe or Bank Transfer on the 1st of every month. You will automatically receive a tax-compliant invoice.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-support">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Still Need Help?</h2>
+                <p>If you couldn't find the answer in our knowledge base, our team is ready to assist you directly.</p>
+            </div>
+            
+            <div class="support-options">
+                <div class="support-box reveal">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Submit a Ticket</h3>
+                    <p>For technical issues, bug reports, or website updates. Track the status of your request directly in our portal.</p>
+                    <a href="#" class="btn btn-outline" style="color:white; border-color:white;">Open Ticket</a>
+                </div>
+
+                <div class="support-box reveal">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>Need a quick answer? Chat directly with our customer success team during standard business hours.</p>
+                    <a href="https://wa.me/919140092735" target="_blank" class="btn btn-primary" style="background:#38bdf8; border-color:#38bdf8;">Chat on WhatsApp</a>
+                </div>
+
+                <div class="support-box reveal">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Schedule a Call</h3>
+                    <p>For strategic discussions, campaign reviews, or complex account inquiries. Book a time with your manager.</p>
+                    <a href="#" class="btn btn-outline" style="color:white; border-color:white;">Book a Time</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/919140092735?text=Hi%20Novaplexes%20Support,%20I%20need%20some%20help!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-large">
+                    <h2>NOVAPLEXES<span class="highlight">.</span></h2>
+                    <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
+                </div>
+            </div>
+
+                        <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                navbar.style.padding = '5px 0';
+            } else {
+                navbar.style.boxShadow = 'none';
+                navbar.style.padding = '0';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open FAQs
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current FAQ
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Check on page load
+    </script>
+</body>
+</html>
