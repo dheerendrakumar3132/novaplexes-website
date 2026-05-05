@@ -56,10 +56,15 @@
         .form-control:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
         input[type="date"].form-control { padding-left: 45px; cursor: pointer; }
 
-        /* Country Code Plugin Styling Fixes */
-        .iti { width: 100%; }
-        .iti__flag-container { z-index: 5; }
-        #regMobile { padding-left: 90px; } /* Flag ke liye space */
+        /* ========================================= */
+        /* --- MOBILE COUNTRY CODE ULTIMATE FIX --- */
+        /* ========================================= */
+        .iti { width: 100%; display: block; }
+        .iti__flag-container { z-index: 10; } 
+        #regMobile { padding-left: 90px; } 
+        /* List ab kisi box se dabegi nahi */
+        .iti__country-list { z-index: 99999 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; white-space: normal; }
+        /* ========================================= */
 
         .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
         .form-options a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
@@ -70,16 +75,31 @@
         .auth-footer { text-align: center; margin-top: 30px; font-size: 0.95rem; }
         .auth-footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        /* --- MODAL (POPUP) GENERAL CSS --- */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); padding: 20px; }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; transform: scale(0.8); transition: var(--transition); max-height: 90vh; overflow-y: auto; }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: var(--transition); z-index: 10; background: var(--bg-white); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .close-modal:hover { color: var(--dark); background: var(--bg-light); }
+        /* --- MODAL (POPUP) NEW SCROLL STRUCTURE --- */
+        .modal-overlay { 
+            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); 
+            z-index: 2000; display: none; 
+            padding: 50px 20px; /* Mobile par top/bottom space */
+            overflow-y: auto; /* SCROLL YAHAN LAGA HAI (Dark background par) */
+            transition: all 0.3s ease; opacity: 0;
+        }
+        .modal-overlay.active { display: block; opacity: 1; } /* Flex hata diya taaki scroll natural ho */
+        
+        .modal-content { 
+            background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; 
+            margin: 0 auto; /* Center horizontal */
+            max-width: 550px;
+            /* YAHAN SE OVERFLOW HATA DIYA TAAKI LIST BAHAR NIKAL SAKE */
+            overflow: visible !important; 
+            max-height: none !important;
+            transform: translateY(-20px); transition: all 0.3s ease; 
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
 
-        .signup-width { max-width: 550px; }
-        .forgot-width { max-width: 420px; }
+        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: var(--transition); z-index: 20; background: var(--bg-light); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .close-modal:hover { color: var(--dark); background: #e2e8f0; }
+
+        .forgot-width { max-width: 420px; margin-top: 10vh; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
         /* --- Mega Footer --- */
@@ -103,6 +123,7 @@
             .auth-card { padding: 40px 25px; }
             .form-grid { grid-template-columns: 1fr; gap: 0; }
             .modal-content { padding: 30px 20px; }
+            .modal-overlay { padding: 20px 10px; } /* Mobile par kam space */
         }
     </style>
 </head>
@@ -154,7 +175,7 @@
 
     <!-- SIGNUP MODAL -->
     <div class="modal-overlay" id="signupModal">
-        <div class="modal-content signup-width">
+        <div class="modal-content">
             <span class="close-modal" id="closeSignup"><i class="fas fa-times"></i></span>
             <div class="auth-header" style="margin-bottom: 25px;">
                 <h2>Join <span class="highlight">Novaplexes</span></h2>
@@ -174,7 +195,6 @@
                     </div>
                 </div>
                 <div class="form-grid">
-                    <!-- Updated Mobile Field with Country Code -->
                     <div class="form-group">
                         <label for="regMobile">Mobile Number</label>
                         <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" maxlength="10" required>
@@ -324,29 +344,26 @@
         </div>
     </footer>
 
-    <!-- JS Logic for Popups & Country Code -->
-    <!-- International Telephone Input JS -->
+    <!-- JS Logic -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        // 1. COUNTRY CODE & MOBILE NUMBER LOGIC
+        // 1. SIMPLEST COUNTRY CODE SETUP (No tricky dropdownContainer needed now)
         const phoneInputField = document.querySelector("#regMobile");
         const phoneInput = window.intlTelInput(phoneInputField, {
-            initialCountry: "in", // Default India (+91)
-            preferredCountries: ["in", "us", "uk", "au", "ca"], // Upar dikhne wale deshon ki list
-            separateDialCode: true, // +91 box ke andar alag se dikhega
+            initialCountry: "in", 
+            preferredCountries: ["in", "us", "uk", "au", "ca"], 
+            separateDialCode: true, 
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
 
-        // Sirf numbers type hone dena aur 10 digit se zyada nahi hone dena
         phoneInputField.addEventListener('input', function (e) {
-            this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric chars
+            this.value = this.value.replace(/[^0-9]/g, ''); 
             if(this.value.length > 10) {
-                this.value = this.value.slice(0, 10); // Max 10 digits
+                this.value = this.value.slice(0, 10); 
             }
         });
 
-
-        // 2. MODAL (POPUP) LOGIC
+        // 2. MODAL LOGIC
         const openSignup = document.getElementById('openSignup');
         const closeSignup = document.getElementById('closeSignup');
         const signupModal = document.getElementById('signupModal');
@@ -383,14 +400,10 @@
             document.body.style.overflow = 'auto';
         });
 
-        // Bahar click karne par popups band karna
+        // Click outside to close (Updated for new structure)
         window.addEventListener('click', (e) => {
-            if (e.target === signupModal) {
-                signupModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-            if (e.target === forgotModal) {
-                forgotModal.classList.remove('active');
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         });
