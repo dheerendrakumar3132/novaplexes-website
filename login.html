@@ -56,15 +56,10 @@
         .form-control:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
         input[type="date"].form-control { padding-left: 45px; cursor: pointer; }
 
-        /* ========================================= */
-        /* --- MOBILE COUNTRY CODE ULTIMATE FIX --- */
-        /* ========================================= */
-        .iti { width: 100%; display: block; }
-        .iti__flag-container { z-index: 10; } 
-        #regMobile { padding-left: 90px; } 
-        /* List ab kisi box se dabegi nahi */
-        .iti__country-list { z-index: 99999 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; white-space: normal; }
-        /* ========================================= */
+        /* Country Code Plugin Styling Fixes */
+        .iti { width: 100%; }
+        .iti__flag-container { z-index: 5; }
+        #regMobile { padding-left: 90px; } /* Flag ke liye space */
 
         .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
         .form-options a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
@@ -75,31 +70,16 @@
         .auth-footer { text-align: center; margin-top: 30px; font-size: 0.95rem; }
         .auth-footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        /* --- MODAL (POPUP) NEW SCROLL STRUCTURE --- */
-        .modal-overlay { 
-            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); 
-            z-index: 2000; display: none; 
-            padding: 50px 20px; /* Mobile par top/bottom space */
-            overflow-y: auto; /* SCROLL YAHAN LAGA HAI (Dark background par) */
-            transition: all 0.3s ease; opacity: 0;
-        }
-        .modal-overlay.active { display: block; opacity: 1; } /* Flex hata diya taaki scroll natural ho */
-        
-        .modal-content { 
-            background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; 
-            margin: 0 auto; /* Center horizontal */
-            max-width: 550px;
-            /* YAHAN SE OVERFLOW HATA DIYA TAAKI LIST BAHAR NIKAL SAKE */
-            overflow: visible !important; 
-            max-height: none !important;
-            transform: translateY(-20px); transition: all 0.3s ease; 
-        }
-        .modal-overlay.active .modal-content { transform: translateY(0); }
+        /* --- MODAL (POPUP) GENERAL CSS --- */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); padding: 20px; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; transform: scale(0.8); transition: var(--transition); max-height: 90vh; overflow-y: auto; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: var(--transition); z-index: 10; background: var(--bg-white); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .close-modal:hover { color: var(--dark); background: var(--bg-light); }
 
-        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: var(--transition); z-index: 20; background: var(--bg-light); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .close-modal:hover { color: var(--dark); background: #e2e8f0; }
-
-        .forgot-width { max-width: 420px; margin-top: 10vh; }
+        .signup-width { max-width: 550px; }
+        .forgot-width { max-width: 420px; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
         /* --- Mega Footer --- */
@@ -123,7 +103,6 @@
             .auth-card { padding: 40px 25px; }
             .form-grid { grid-template-columns: 1fr; gap: 0; }
             .modal-content { padding: 30px 20px; }
-            .modal-overlay { padding: 20px 10px; } /* Mobile par kam space */
         }
     </style>
 </head>
@@ -175,7 +154,7 @@
 
     <!-- SIGNUP MODAL -->
     <div class="modal-overlay" id="signupModal">
-        <div class="modal-content">
+        <div class="modal-content signup-width">
             <span class="close-modal" id="closeSignup"><i class="fas fa-times"></i></span>
             <div class="auth-header" style="margin-bottom: 25px;">
                 <h2>Join <span class="highlight">Novaplexes</span></h2>
@@ -195,6 +174,7 @@
                     </div>
                 </div>
                 <div class="form-grid">
+                    <!-- Updated Mobile Field with Country Code -->
                     <div class="form-group">
                         <label for="regMobile">Mobile Number</label>
                         <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" maxlength="10" required>
@@ -219,6 +199,9 @@
                 </div>
                 <button type="submit" class="btn-auth" style="margin-top: 10px;">Register Now</button>
             </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-light);">
+                By clicking "Register Now", you agree to our <a href="terms of use.html" style="color:var(--primary); text-decoration:none;">Terms</a> & <a href="privacy policy.html" style="color:var(--primary); text-decoration:none;">Privacy Policy</a>.
+            </p>
         </div>
     </div>
 
@@ -253,37 +236,117 @@
                     <p>Your ultimate partner for end-to-end digital transformation, web development, marketing, and AI automation.</p>
                 </div>
             </div>
+            <div class="footer-grid-mega">
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="website.html">Website</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="digital marketing.html">Digital Marketing</a></li>
+                        <li><a href="advertising.html">Advertising</a></li>
+                        <li><a href="business automation.html">Business Automation</a></li>
+                        <li><a href="branding strategy.html">Branding & Strategy</a></li>
+                        <li><a href="ai integration.html">AI Integration</a></li>
+                        <li><a href="business research.html">Business Research</a></li>
+                        <li><a href="influencer marketing.html">Influencer Marketing</a></li>
+                        <li><a href="management.html">Management</a></li>
+                        <li><a href="e-commerce.html">E-commerce</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="online stores.html">Online Stores</a></li>
+                        <li><a href="shopify.html">Shopify</a></li>
+                        <li><a href="wordpress.html">Wordpress</a></li>
+                        <li><a href="ai website.html">AI Website</a></li>
+                        <li><a href="custom analytics.html">Custom Analytics</a></li>
+                        <li><a href="email campaigns.html">Email Campaigns</a></li>
+                        <li><a href="invoicing.html">Invoicing</a></li>
+                        <li><a href="scheduling.html">Scheduling</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="help center.html">Help Center</a></li>
+                        <li><a href="hire an expert.html">Hire an Expert</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Other Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://imagecraft.novaplexes.com/">Image Merger</a></li>
+                        <li><a href="https://webimgtool.novaplexes.com">Image Converter</a></li>
+                        <li><a href="https://instareeldownloader.novaplexes.com/">InstaReelDownloader</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Business</h3>
+                    <ul class="footer-links">
+                        <li><a href="partner with us.html">Partner with Us</a></li>
+                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="dropship.html">Dropship</a></li>
+                    </ul>
+
+                    <h3 class="mt-25">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms of use.html">Terms of Use</a></li>
+                        <li><a href="privacy policy.html">Privacy Policy</a></li>
+                        <li><a href="refund policy.html">Refund Policies</a></li>
+                        <li><a href="payment & billing policy.html">Payment & Billing Policies</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
             <div class="footer-bottom">
-                <div class="footer-social">
+                <div class="footer-social" style="margin-top: 0; margin-bottom: 20px; justify-content: center;">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/Dheeren61824501"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/novaplexes_?igsh=ZmtxYTliZGYyaWJp"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1LBSBoomG2/"><i class="fab fa-facebook-f"></i></a>
                 </div>
                 <p>&copy; 2026 Novaplexes. All Rights Reserved. Designed for Digital Excellence.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JS Logic -->
+    <!-- JS Logic for Popups & Country Code -->
+    <!-- International Telephone Input JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        // 1. SIMPLEST COUNTRY CODE SETUP (No tricky dropdownContainer needed now)
+        // 1. COUNTRY CODE & MOBILE NUMBER LOGIC
         const phoneInputField = document.querySelector("#regMobile");
         const phoneInput = window.intlTelInput(phoneInputField, {
-            initialCountry: "in", 
-            preferredCountries: ["in", "us", "uk", "au", "ca"], 
-            separateDialCode: true, 
+            initialCountry: "in", // Default India (+91)
+            preferredCountries: ["in", "us", "uk", "au", "ca"], // Upar dikhne wale deshon ki list
+            separateDialCode: true, // +91 box ke andar alag se dikhega
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
 
+        // Sirf numbers type hone dena aur 10 digit se zyada nahi hone dena
         phoneInputField.addEventListener('input', function (e) {
-            this.value = this.value.replace(/[^0-9]/g, ''); 
+            this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric chars
             if(this.value.length > 10) {
-                this.value = this.value.slice(0, 10); 
+                this.value = this.value.slice(0, 10); // Max 10 digits
             }
         });
 
-        // 2. MODAL LOGIC
+
+        // 2. MODAL (POPUP) LOGIC
         const openSignup = document.getElementById('openSignup');
         const closeSignup = document.getElementById('closeSignup');
         const signupModal = document.getElementById('signupModal');
@@ -320,10 +383,14 @@
             document.body.style.overflow = 'auto';
         });
 
-        // Click outside to close (Updated for new structure)
+        // Bahar click karne par popups band karna
         window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay')) {
-                e.target.classList.remove('active');
+            if (e.target === signupModal) {
+                signupModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === forgotModal) {
+                forgotModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         });
