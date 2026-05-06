@@ -56,15 +56,11 @@
         .form-control:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
         input[type="date"].form-control { padding-left: 45px; cursor: pointer; }
 
-        /* ========================================= */
-        /* --- MOBILE COUNTRY CODE ULTIMATE FIX --- */
-        /* ========================================= */
+        /* --- Phone Input Specifics --- */
         .iti { width: 100%; display: block; }
         .iti__flag-container { z-index: 10; } 
-        #regMobile { padding-left: 90px; } 
-        /* List ab kisi box se dabegi nahi */
-        .iti__country-list { z-index: 99999 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; white-space: normal; }
-        /* ========================================= */
+        #regMobile { padding-left: 90px !important; } 
+        .iti__country-list { z-index: 10000 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; white-space: normal; background: #fff; }
 
         .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
         .form-options a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
@@ -75,21 +71,20 @@
         .auth-footer { text-align: center; margin-top: 30px; font-size: 0.95rem; }
         .auth-footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        /* --- MODAL (POPUP) NEW SCROLL STRUCTURE --- */
+        /* --- MODAL (POPUP) --- */
         .modal-overlay { 
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); 
             z-index: 2000; display: none; 
-            padding: 50px 20px; /* Mobile par top/bottom space */
-            overflow-y: auto; /* SCROLL YAHAN LAGA HAI (Dark background par) */
+            padding: 50px 20px; 
+            overflow-y: auto; 
             transition: all 0.3s ease; opacity: 0;
         }
-        .modal-overlay.active { display: block; opacity: 1; } /* Flex hata diya taaki scroll natural ho */
+        .modal-overlay.active { display: block; opacity: 1; } 
         
         .modal-content { 
             background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; 
-            margin: 0 auto; /* Center horizontal */
+            margin: 0 auto;
             max-width: 550px;
-            /* YAHAN SE OVERFLOW HATA DIYA TAAKI LIST BAHAR NIKAL SAKE */
             overflow: visible !important; 
             max-height: none !important;
             transform: translateY(-20px); transition: all 0.3s ease; 
@@ -118,12 +113,15 @@
         .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
         .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
 
+        .mt-25 { margin-top: 25px; }
+        .badge-new { background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px; }
+
         @media (max-width: 768px) {
             .footer-grid-mega { grid-template-columns: 1fr 1fr; }
             .auth-card { padding: 40px 25px; }
             .form-grid { grid-template-columns: 1fr; gap: 0; }
             .modal-content { padding: 30px 20px; }
-            .modal-overlay { padding: 20px 10px; } /* Mobile par kam space */
+            .modal-overlay { padding: 20px 10px; }
         }
     </style>
 </head>
@@ -197,7 +195,7 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="regMobile">Mobile Number</label>
-                        <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" maxlength="10" required>
+                        <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" required>
                     </div>
                     <div class="form-group">
                         <label for="regDob">Date of Birth</label>
@@ -347,7 +345,7 @@
     <!-- JS Logic -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        // 1. SIMPLEST COUNTRY CODE SETUP (No tricky dropdownContainer needed now)
+        // 1. COUNTRY CODE SETUP
         const phoneInputField = document.querySelector("#regMobile");
         const phoneInput = window.intlTelInput(phoneInputField, {
             initialCountry: "in", 
@@ -364,47 +362,35 @@
         });
 
         // 2. MODAL LOGIC
-        const openSignup = document.getElementById('openSignup');
-        const closeSignup = document.getElementById('closeSignup');
-        const signupModal = document.getElementById('signupModal');
+        function toggleModal(modalId, action) {
+            const modal = document.getElementById(modalId);
+            if(action === 'open') {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
-        openSignup.addEventListener('click', (e) => {
+        document.getElementById('openSignup').addEventListener('click', (e) => {
             e.preventDefault();
-            signupModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            toggleModal('signupModal', 'open');
         });
 
-        closeSignup.addEventListener('click', () => {
-            signupModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+        document.getElementById('closeSignup').addEventListener('click', () => toggleModal('signupModal', 'close'));
 
-        const openForgot = document.getElementById('openForgot');
-        const closeForgot = document.getElementById('closeForgot');
-        const forgotModal = document.getElementById('forgotModal');
-        const backToLoginFromForgot = document.getElementById('backToLoginFromForgot');
-
-        openForgot.addEventListener('click', (e) => {
+        document.getElementById('openForgot').addEventListener('click', (e) => {
             e.preventDefault();
-            forgotModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            toggleModal('forgotModal', 'open');
         });
 
-        closeForgot.addEventListener('click', () => {
-            forgotModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+        document.getElementById('closeForgot').addEventListener('click', () => toggleModal('forgotModal', 'close'));
+        document.getElementById('backToLoginFromForgot').addEventListener('click', () => toggleModal('forgotModal', 'close'));
 
-        backToLoginFromForgot.addEventListener('click', () => {
-            forgotModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Click outside to close (Updated for new structure)
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) {
-                e.target.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                toggleModal(e.target.id, 'close');
             }
         });
     </script>
