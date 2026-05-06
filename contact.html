@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Contact Us | Novaplexes</title>
     <meta name="description" content="Get in touch with Novaplexes. Let's discuss your next big digital project, SEO campaign, or e-commerce store.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- International Telephone Input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     
     <style>
         /* --- Variables & Core Styles (Strict Homepage Colors) --- */
@@ -46,7 +49,8 @@
         /* --- Header / Navbar --- */
         header { position: fixed; width: 100%; top: 0; z-index: 1000; background: var(--bg-white); transition: var(--transition); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; }
+        .logo a { text-decoration: none; }
+        .logo h1 { font-size: 1.8rem; letter-spacing: -1px; color: var(--dark); }
         .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
@@ -111,7 +115,7 @@
         .map-container { width: 100%; height: 450px; background: #e2e8f0; margin-top: 0; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* --- Mega Footer CSS (Exact Match) --- */
+        /* --- Mega Footer CSS --- */
         footer { background: #020617; color: var(--text-light); padding: 80px 0 20px; }
         .footer-top { margin-bottom: 40px; border-bottom: 1px solid var(--dark-light); padding-bottom: 40px; }
         .footer-brand-large { max-width: 600px; }
@@ -135,12 +139,11 @@
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- Responsive --- */
+        /* --- Mobile Fixes --- */
         @media (max-width: 992px) {
             .contact-wrapper { grid-template-columns: 1fr; }
             .contact-image { min-height: 350px; }
             .form-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 0; }
-            .form-row .form-group { margin-bottom: 25px; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
@@ -148,8 +151,11 @@
             .hamburger { display: block; }
             .page-header h1 { font-size: 3rem; }
             .contact-form-container { padding: 40px 20px; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
         }
+
+        /* --- Intl-Tel-Input Ultimate Fix --- */
+        .iti { width: 100%; display: block; }
+        .iti__country-list { z-index: 99999 !important; border-radius: 8px; max-width: 300px; white-space: normal; }
     </style>
 </head>
 <body>
@@ -157,7 +163,7 @@
     <header id="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <h1>NOVAPLEXES<span class="highlight">.</span></h1>
+                <a href="index.html"><h1>NOVAPLEXES<span class="highlight">.</span></h1></a>
             </div>
             <nav>
                 <ul class="nav-links">
@@ -221,7 +227,7 @@
                     <h2>Get in Touch</h2>
                     <p>Tell us a bit about your project or business needs.</p>
                     
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully to the Novaplexes team.');">
+                    <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>
@@ -239,8 +245,8 @@
                                 <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="+xx 99999 99999" required>
+                                <label for="contactMobile">Mobile Number</label>
+                                <input type="tel" id="contactMobile" class="form-control" required>
                             </div>
                         </div>
 
@@ -261,7 +267,7 @@
                             <label for="budget">Estimated Budget *</label>
                             <select id="budget" class="form-control" required>
                                 <option value="" disabled selected>Select Budget Range</option>
-                                <option value="< $1,000">Less than $1,000</option>
+                                <option value=" $1,000">Less than $1,000</option>
                                 <option value="$1,000 - $5,000">$1,000 - $5,000</option>
                                 <option value="$5,000 - $10,000">$5,000 - $10,000</option>
                                 <option value="$10,000+">$10,000+</option>
@@ -317,7 +323,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <footer id="footer">
+    <footer>
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand-large">
@@ -326,7 +332,7 @@
                 </div>
             </div>
 
-                        <div class="footer-grid-mega">
+            <div class="footer-grid-mega">
                 
                 <div class="footer-col">
                     <h3>Services</h3>
@@ -413,48 +419,63 @@
             </div>
         </div>
     </footer>
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    
     <script>
+        // 1. COUNTRY CODE & MOBILE NUMBER LOGIC
+        const phoneInputField = document.querySelector("#contactMobile");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "in",
+            preferredCountries: ["in", "us", "gb", "au", "ca"],
+            separateDialCode: true,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        // Numeric validation
+        phoneInputField.addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if(this.value.length > 10) this.value = this.value.slice(0, 10);
+        });
+
+        // Form Submit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been sent successfully to the Novaplexes team.');
+            this.reset();
+        });
+
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
-                navbar.style.padding = '5px 0';
             } else {
                 navbar.style.boxShadow = 'none';
-                navbar.style.padding = '0';
             }
         });
 
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-        
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Scroll Reveal Animation Logic
+        // Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Trigger point
-
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Check on page load
+        reveal();
     </script>
 </body>
 </html>
