@@ -56,11 +56,26 @@
         .form-control:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
         input[type="date"].form-control { padding-left: 45px; cursor: pointer; }
 
-        /* --- Phone Input Specifics --- */
+        /* ========================================= */
+        /* --- MOBILE COUNTRY CODE ULTIMATE FIX --- */
+        /* ========================================= */
         .iti { width: 100%; display: block; }
         .iti__flag-container { z-index: 10; } 
-        #regMobile { padding-left: 90px !important; } 
-        .iti__country-list { z-index: 10000 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; white-space: normal; background: #fff; }
+        /* Mobile fixes for the dropdown visibility */
+        .iti--separate-dial-code .iti__selected-dial-code { font-size: 14px; margin-left: 4px; color: var(--dark); }
+        #regMobile { padding-left: 95px !important; } 
+        /* Modal ke andar dropdown ko z-index dena zaroori hai */
+        .iti__country-list { 
+            z-index: 99999 !important; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            max-width: 300px; 
+            white-space: normal; 
+            background-color: #fff;
+        }
+        /* Dropdown selection layout fix */
+        .iti__country { padding: 8px 10px; outline: none; }
+        /* ========================================= */
 
         .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.85rem; }
         .form-options a { color: var(--primary); text-decoration: none; font-weight: 600; cursor: pointer; }
@@ -71,7 +86,7 @@
         .auth-footer { text-align: center; margin-top: 30px; font-size: 0.95rem; }
         .auth-footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        /* --- MODAL (POPUP) --- */
+        /* --- MODAL (POPUP) NEW SCROLL STRUCTURE --- */
         .modal-overlay { 
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); 
             z-index: 2000; display: none; 
@@ -83,7 +98,7 @@
         
         .modal-content { 
             background: var(--bg-white); width: 100%; border-radius: 20px; position: relative; padding: 40px; 
-            margin: 0 auto;
+            margin: 0 auto; 
             max-width: 550px;
             overflow: visible !important; 
             max-height: none !important;
@@ -113,15 +128,12 @@
         .footer-social a { width: 40px; height: 40px; background: var(--dark-light); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--bg-white); text-decoration: none; transition: var(--transition); }
         .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
 
-        .mt-25 { margin-top: 25px; }
-        .badge-new { background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px; }
-
         @media (max-width: 768px) {
             .footer-grid-mega { grid-template-columns: 1fr 1fr; }
             .auth-card { padding: 40px 25px; }
             .form-grid { grid-template-columns: 1fr; gap: 0; }
             .modal-content { padding: 30px 20px; }
-            .modal-overlay { padding: 20px 10px; }
+            .modal-overlay { padding: 20px 10px; } 
         }
     </style>
 </head>
@@ -195,7 +207,8 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="regMobile">Mobile Number</label>
-                        <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" required>
+                        <!-- Country code will appear here -->
+                        <input type="tel" id="regMobile" class="form-control" placeholder="9876543210" maxlength="10" required>
                     </div>
                     <div class="form-group">
                         <label for="regDob">Date of Birth</label>
@@ -295,7 +308,7 @@
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
 
-                    <h3 class="mt-25">Support</h3>
+                    <h3 class="mt-25" style="margin-top: 25px; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Support</h3>
                     <ul class="footer-links">
                         <li><a href="help center.html">Help Center</a></li>
                         <li><a href="hire an expert.html">Hire an Expert</a></li>
@@ -315,11 +328,11 @@
                     <h3>Business</h3>
                     <ul class="footer-links">
                         <li><a href="partner with us.html">Partner with Us</a></li>
-                        <li><a href="reseller.html">Reseller <span class="badge-new">New</span></a></li>
+                        <li><a href="reseller.html">Reseller <span style="background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px;">New</span></a></li>
                         <li><a href="dropship.html">Dropship</a></li>
                     </ul>
 
-                    <h3 class="mt-25">Policies</h3>
+                    <h3 class="mt-25" style="margin-top: 25px; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Policies</h3>
                     <ul class="footer-links">
                         <li><a href="terms of use.html">Terms of Use</a></li>
                         <li><a href="privacy policy.html">Privacy Policy</a></li>
@@ -345,7 +358,7 @@
     <!-- JS Logic -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        // 1. COUNTRY CODE SETUP
+        // 1. SIMPLEST COUNTRY CODE SETUP
         const phoneInputField = document.querySelector("#regMobile");
         const phoneInput = window.intlTelInput(phoneInputField, {
             initialCountry: "in", 
@@ -354,6 +367,7 @@
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
 
+        // Validation for numeric input
         phoneInputField.addEventListener('input', function (e) {
             this.value = this.value.replace(/[^0-9]/g, ''); 
             if(this.value.length > 10) {
@@ -362,35 +376,52 @@
         });
 
         // 2. MODAL LOGIC
-        function toggleModal(modalId, action) {
-            const modal = document.getElementById(modalId);
-            if(action === 'open') {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
+        const openSignup = document.getElementById('openSignup');
+        const closeSignup = document.getElementById('closeSignup');
+        const signupModal = document.getElementById('signupModal');
 
-        document.getElementById('openSignup').addEventListener('click', (e) => {
+        openSignup.addEventListener('click', (e) => {
             e.preventDefault();
-            toggleModal('signupModal', 'open');
+            signupModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Modal khulne par library ko refresh karne ke liye (Taki flag sahi se dikhe)
+            setTimeout(() => {
+                const dialCode = document.querySelector('.iti__selected-dial-code');
+                if(dialCode) dialCode.style.display = "inline-block";
+            }, 100);
         });
 
-        document.getElementById('closeSignup').addEventListener('click', () => toggleModal('signupModal', 'close'));
-
-        document.getElementById('openForgot').addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleModal('forgotModal', 'open');
+        closeSignup.addEventListener('click', () => {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
 
-        document.getElementById('closeForgot').addEventListener('click', () => toggleModal('forgotModal', 'close'));
-        document.getElementById('backToLoginFromForgot').addEventListener('click', () => toggleModal('forgotModal', 'close'));
+        const openForgot = document.getElementById('openForgot');
+        const closeForgot = document.getElementById('closeForgot');
+        const forgotModal = document.getElementById('forgotModal');
+        const backToLoginFromForgot = document.getElementById('backToLoginFromForgot');
 
+        openForgot.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeForgot.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        backToLoginFromForgot.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Click outside to close
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) {
-                toggleModal(e.target.id, 'close');
+                e.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
         });
     </script>
