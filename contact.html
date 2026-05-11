@@ -229,32 +229,41 @@
                     <h2>Get in Touch</h2>
                     <p>Tell us a bit about your project or business needs.</p>
                     
-                    <form id="contactForm">
+                    <!-- Success Message Box (Hidden by default) -->
+                    <div id="successMessage" style="display: none; background: #dcfce7; border: 1px solid #22c55e; color: #15803d; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-weight: 600;">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i> Form Successfully Submitted! We will contact you shortly.
+                    </div>
+
+                    <form id="contactForm" action="https://formsubmit.co/ajax/pateldheerendra16@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Project Inquiry - Novaplexes">
+                        <input type="hidden" name="_template" value="table">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" class="form-control" placeholder="John" required>
+                                <input type="text" id="firstName" name="First Name" class="form-control" placeholder="John" required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
+                                <input type="text" id="lastName" name="Last Name" class="form-control" placeholder="Doe" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Work Email *</label>
-                                <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
+                                <input type="email" id="email" name="Email" class="form-control" placeholder="john@company.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="contactMobile">Mobile Number</label>
-                                <input type="tel" id="contactMobile" class="form-control" required>
+                                <input type="tel" id="contactMobile" name="Mobile" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="service">What are you interested in? *</label>
-                            <select id="service" class="form-control" required>
+                            <select id="service" name="Service" class="form-control" required>
                                 <option value="" disabled selected>Select a Service</option>
                                 <option value="Website Development">Website Development</option>
                                 <option value="E-Commerce / Shopify">E-Commerce / Shopify</option>
@@ -267,7 +276,7 @@
 
                         <div class="form-group">
                             <label for="budget">Estimated Budget *</label>
-                            <select id="budget" class="form-control" required>
+                            <select id="budget" name="Budget" class="form-control" required>
                                 <option value="" disabled selected>Select Budget Range</option>
                                 <option value=" $1,000">Less than $1,000</option>
                                 <option value="$1,000 - $5,000">$1,000 - $5,000</option>
@@ -278,7 +287,7 @@
 
                         <div class="form-group">
                             <label for="message">Project Details *</label>
-                            <textarea id="message" class="form-control" placeholder="Tell us about your goals, timeline, and any specific requirements..." required></textarea>
+                            <textarea id="message" name="Project Details" class="form-control" placeholder="Tell us about your goals, timeline, and any specific requirements..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary submit-btn">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
@@ -441,11 +450,47 @@
             if(this.value.length > 10) this.value = this.value.slice(0, 10);
         });
 
-        // Form Submit
+        // Form Submit via AJAX (FormSubmit)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you! Your message has been sent successfully to the Novaplexes team.');
-            this.reset();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const successMsg = document.getElementById('successMessage');
+            
+            // Get full mobile number with country code from intlTelInput
+            const fullMobileNumber = phoneInput.getNumber();
+            
+            // Create FormData and append the correct mobile number
+            const formData = new FormData(form);
+            formData.set('Mobile', fullMobileNumber);
+
+            // Change button state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin" style="margin-left: 8px;"></i>';
+            submitBtn.disabled = true;
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success || data.success === "true") {
+                    form.reset();
+                    successMsg.style.display = 'block';
+                    form.style.display = 'none'; // Optional: hide form after submission
+                } else {
+                    alert('Something went wrong! Please try again later.');
+                }
+            })
+            .catch(error => {
+                alert('Error submitting form! Check your internet connection.');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
 
         // Navbar Scroll Effect
