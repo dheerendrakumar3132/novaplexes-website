@@ -456,7 +456,10 @@
             if(this.value.length > 10) this.value = this.value.slice(0, 10);
         });
 
-        // Form Submit via AJAX (FormSubmit)
+        // 🔴 YAHAN APNA NAYA GOOGLE APP SCRIPT URL PASTE KAREIN
+        const novaplexesScriptURL = 'YAHAN_APNA_NAYA_GOOGLE_APP_SCRIPT_URL_PASTE_KAREIN';
+
+        // Form Submit via AJAX (Google Sheets)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -464,31 +467,26 @@
             const submitBtn = form.querySelector('.submit-btn');
             const successMsg = document.getElementById('successMessage');
             
-            // Get full mobile number with country code from intlTelInput
+            // intlTelInput se Country Code ke sath poora mobile number nikalna
             const fullMobileNumber = phoneInput.getNumber();
             
-            // Create FormData and append the correct mobile number
+            // FormData banana aur usme combined mobile number set karna
             const formData = new FormData(form);
             formData.set('Mobile', fullMobileNumber);
 
-            // Change button state
+            // Button ka text aur state change karna
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin" style="margin-left: 8px;"></i>';
             submitBtn.disabled = true;
 
-            fetch(form.action, {
-                method: form.method,
+            fetch(novaplexesScriptURL, {
+                method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success || data.success === "true") {
-                    form.reset();
-                    successMsg.style.display = 'block';
-                    form.style.display = 'none'; // Optional: hide form after submission
-                } else {
-                    alert('Something went wrong! Please try again later.');
-                }
+            .then(response => {
+                form.reset();
+                successMsg.style.display = 'block';
+                form.style.display = 'none'; // Form ko submit hone ke baad chhupana
             })
             .catch(error => {
                 alert('Error submitting form! Check your internet connection.');
