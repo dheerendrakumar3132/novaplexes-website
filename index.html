@@ -566,5 +566,41 @@
         window.addEventListener("scroll", reveal);
         reveal(); // Check on page load
     </script>
+
+    <script>
+  // Phase 1 mein jo Google Script URL copy kiya tha, use yahan paste karein
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbydlWSJJ64tbgqmmgNON9qsrgNBD5_jcJz3_1yqGxojK_whYGJy3Pc913jJfpFKfm3AlA/exec'; 
+  
+  const form = document.getElementById('subscribeForm');
+  const successMsg = document.getElementById('successMessage');
+  const submitBtn = document.getElementById('subBtn');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    // Button par loading text dikhane ke liye
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = "Subscribing..."; 
+    submitBtn.disabled = true;
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        successMsg.style.display = "block"; // Success message dikhayega
+        submitBtn.innerHTML = originalBtnText; // Button text wapas pehle jaisa
+        submitBtn.disabled = false;
+        form.reset(); // Input field khali kar dega
+        
+        // 4 second baad message apne aap gayab ho jayega
+        setTimeout(function(){
+            successMsg.style.display = "none";
+        }, 4000);
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      });
+  });
+</script>
 </body>
 </html>
