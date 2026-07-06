@@ -397,16 +397,22 @@
         </div>
     </section>
 
-    <section class="cta">
-        <div class="container reveal">
-            <h2>Ready to Dominate Your Industry?</h2>
-            <p>Subscribe to our newsletter for exclusive digital growth hacks and AI strategies.</p>
-            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe Now</button>
-            </form>
-        </div>
-    </section>
+  <section class="cta">
+    <div class="container reveal">
+        <h2>Ready to Dominate Your Industry?</h2>
+        <p>Subscribe to our newsletter for exclusive digital growth hacks and AI strategies.</p>
+        
+        <form class="subscribe-form" id="subscribeForm">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit" id="subBtn">Subscribe Now</button>
+        </form>
+        
+        <!-- Success message dikhane ke liye bina alert box ke -->
+        <p id="successMessage" style="color: #4ade80; display: none; margin-top: 15px; font-weight: 600; font-size: 1.1rem;">
+            🎉 Subscribed successfully!
+        </p>
+    </div>
+</section>
 
     <a href="https://wa.me/919140092735?text=Hi%20Novaplexes,%20I%20want%20to%20grow%20my%20business!" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
